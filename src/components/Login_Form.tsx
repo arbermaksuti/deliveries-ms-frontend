@@ -1,29 +1,37 @@
 import { LoadingButton } from '@mui/lab'
-import { Box, Button, FormLabel, TextField, Typography } from '@mui/material'
+import { Box, Button, TextField, Typography } from '@mui/material'
 import { useState } from 'react'
 
 interface Props {
-  login(e: any, username: string, password: string): any
+  nextForm?: any
 }
 
 const Login_Form: React.FC<Props> = (props) => {
-  const { login } = props
+  const { nextForm } = props
   const [username, setUsername] = useState<string>('')
   const [password, setPassword] = useState<string>('')
+  const [loading, setLoading] = useState<boolean>(false)
+
+  const login_handler = (e: any, username: string, password: string) => {
+    e.preventDefault()
+    setLoading(true)
+    alert(
+      `Hey ${username ? username : 'Test'} you are logged in with ${
+        password ? password : 'Test'
+      } password`
+    )
+    setTimeout(() => {
+      nextForm()
+      setUsername('')
+      setPassword('')
+      setLoading(false)
+    }, 2000)
+    return () => clearTimeout()
+  }
 
   return (
     <Box
       sx={{
-        borderRadius: '8px',
-        background: '#fff',
-        py: {
-          xs: 5,
-          lg: '40px',
-        },
-        px: {
-          xs: 5,
-          md: '80px',
-        },
         width: '100%',
       }}
     >
@@ -53,43 +61,47 @@ const Login_Form: React.FC<Props> = (props) => {
       <Box
         component="form"
         sx={{ mt: '40px' }}
-        onSubmit={(e: any) => login(e, username, password)}
+        onSubmit={(e: any) => login_handler(e, username, password)}
       >
         <Box>
-          <FormLabel sx={{ color: '#323232', ml: 1, fontWeight: '500' }}>
+          {/* <FormLabel sx={{ color: '#323232', ml: 1, fontWeight: '500' }}>
             Username
-          </FormLabel>
+          </FormLabel> */}
           <TextField
             id="username"
             name="username"
             type="text"
-            placeholder="Input your username in here"
+            placeholder="Input your username here"
             fullWidth
             margin="dense"
+            label="Username"
+            variant="standard"
             onChange={(e) => setUsername(e.target.value)}
           />
         </Box>
         <Box mt={2}>
-          <FormLabel sx={{ color: '#323232', ml: 1, fontWeight: '500' }}>
+          {/* <FormLabel sx={{ color: '#323232', ml: 1, fontWeight: '500' }}>
             Password
-          </FormLabel>
+          </FormLabel> */}
           <TextField
             id="password"
             name="password"
             type="password"
-            placeholder="Input your password in here"
+            placeholder="Input your password here"
             fullWidth
             margin="dense"
+            label="Password"
+            variant="outlined"
             onChange={(e) => setPassword(e.target.value)}
           />
           <Box display="flex" justifyContent="end">
             <Button
               variant="text"
               sx={{
-                color: '#A3A3A3',
                 fontSize: '16px',
                 textTransform: 'none',
               }}
+              onClick={nextForm}
             >
               Forgot Password?
             </Button>
@@ -108,6 +120,7 @@ const Login_Form: React.FC<Props> = (props) => {
             variant="contained"
             type="submit"
             fullWidth
+            loading={loading}
           >
             Log In
           </LoadingButton>
