@@ -6,6 +6,7 @@ import {
   TextField,
   Button,
   Divider,
+  Alert,
 } from '@mui/material'
 import { useState } from 'react'
 
@@ -18,15 +19,18 @@ const Forgot_Password_Form: React.FC<Props> = (props) => {
   const { previousForm, nextForm } = props
   const [email, setEmail] = useState<string>('')
   const [loading, setLoading] = useState<boolean>(false)
+  const [error, setError] = useState<boolean>(false)
 
-  const forgot_password_handler = (e: any, email: string) => {
+  const forgot_password_handler = (e: any) => {
     e.preventDefault()
-    setLoading(true)
     alert(`Hey you are write this email ${email}`)
+    setLoading(true)
+    setError(true)
     setTimeout(() => {
       nextForm()
       setEmail('')
       setLoading(false)
+      setError(false)
     }, 2000)
     return () => clearTimeout()
   }
@@ -63,7 +67,7 @@ const Forgot_Password_Form: React.FC<Props> = (props) => {
       <Box
         component="form"
         sx={{ mt: '40px' }}
-        onSubmit={(e: any) => forgot_password_handler(e, email)}
+        onSubmit={(e: any) => forgot_password_handler(e)}
       >
         <Box>
           <FormLabel sx={{ color: '#323232', ml: 1, fontWeight: '500' }}>
@@ -86,7 +90,7 @@ const Forgot_Password_Form: React.FC<Props> = (props) => {
           sx={{
             mt: {
               xs: 5,
-              lg: '40px',
+              lg: '30px',
             },
           }}
         >
@@ -99,6 +103,11 @@ const Forgot_Password_Form: React.FC<Props> = (props) => {
           >
             Send Code
           </LoadingButton>
+          {error && (
+            <Alert severity="error" sx={{ mt: 1 }}>
+              Just for test!
+            </Alert>
+          )}
         </Box>
         <Divider />
         <Button
@@ -107,7 +116,7 @@ const Forgot_Password_Form: React.FC<Props> = (props) => {
             textTransform: 'none',
           }}
           variant="text"
-          onClick={previousForm}
+          onClick={() => previousForm()}
         >
           Remember your password?
         </Button>

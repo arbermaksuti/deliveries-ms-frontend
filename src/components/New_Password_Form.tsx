@@ -1,37 +1,37 @@
 import { LoadingButton } from '@mui/lab'
 import {
-  Alert,
   Box,
-  Button,
+  Typography,
   FormLabel,
   TextField,
-  Typography,
+  Divider,
+  Button,
+  Alert,
 } from '@mui/material'
-import { useState } from 'react'
+import React, { useState } from 'react'
 
 interface Props {
-  nextForm?: any
+  nextForm(): any
+  previousForm(formId?: number): any
 }
-
-const Login_Form: React.FC<Props> = (props) => {
-  const { nextForm } = props
-  const [username, setUsername] = useState<string>('')
-  const [password, setPassword] = useState<string>('')
+const New_Password_Form: React.FC<Props> = (props) => {
+  const { previousForm, nextForm } = props
+  const [newPassword, setNewPassword] = useState<string>('')
+  const [confirmNewPassword, setConfirmNewPassword] = useState<string>('')
   const [loading, setLoading] = useState<boolean>(false)
   const [error, setError] = useState<boolean>(false)
 
-  const login_handler = (e: any) => {
+  const new_password_handler = (e: any) => {
     e.preventDefault()
     alert(
-      `Hey ${username ? username : 'Test'} you are logged in with ${password ? password : 'Test'
-      } password`
+      `Hey you are write this new password ${newPassword} ${confirmNewPassword}`
     )
     setLoading(true)
     setError(true)
     setTimeout(() => {
       nextForm()
-      setUsername('')
-      setPassword('')
+      setNewPassword('')
+      setConfirmNewPassword('')
       setLoading(false)
       setError(false)
     }, 2000)
@@ -50,7 +50,7 @@ const Login_Form: React.FC<Props> = (props) => {
         variant="h5"
         component="div"
       >
-        Log In
+        New Password
       </Typography>
       <Box
         sx={{
@@ -69,49 +69,40 @@ const Login_Form: React.FC<Props> = (props) => {
       </Box>
       <Box
         component="form"
-        sx={{ mt: '30px' }}
-        onSubmit={(e: any) => login_handler(e)}
+        sx={{ mt: '40px' }}
+        onSubmit={(e: any) => new_password_handler(e)}
       >
         <Box>
           <FormLabel sx={{ color: '#323232', ml: 1, fontWeight: '500' }}>
-            Username
+            New Password
           </FormLabel>
           <TextField
-            id="username"
-            name="username"
+            id="new_password"
+            name="new_password"
             type="text"
-            placeholder="Input your username here"
+            placeholder="Input your new password here"
             fullWidth
             margin="dense"
-            onChange={(e) => setUsername(e.target.value)}
+            onChange={(e) => setNewPassword(e.target.value)}
           />
         </Box>
-        <Box mt={2}>
+        <Box sx={{ mt: 2 }}>
           <FormLabel sx={{ color: '#323232', ml: 1, fontWeight: '500' }}>
-            Password
+            Confirm New Password
           </FormLabel>
           <TextField
-            id="password"
-            name="password"
-            type="password"
-            placeholder="Input your password here"
+            id="confirm_new_password"
+            name="confirm_new_password"
+            type="text"
+            placeholder="Write your new password here again"
             fullWidth
             margin="dense"
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(e) => setConfirmNewPassword(e.target.value)}
           />
-          <Box display="flex" justifyContent="end">
-            <Button
-              variant="text"
-              sx={{
-                fontSize: '16px',
-                textTransform: 'none',
-              }}
-              onClick={nextForm}
-            >
-              Forgot Password?
-            </Button>
-          </Box>
         </Box>
+        {/* <Typography fontSize="small" sx={{ ml: 1 }}>
+                    You will receive one 6 character code on this email!
+                </Typography> */}
         <Box
           sx={{
             mt: {
@@ -127,7 +118,7 @@ const Login_Form: React.FC<Props> = (props) => {
             fullWidth
             loading={loading}
           >
-            Log In
+            Submit
           </LoadingButton>
           {error && (
             <Alert severity="error" sx={{ mt: 1 }}>
@@ -135,9 +126,20 @@ const Login_Form: React.FC<Props> = (props) => {
             </Alert>
           )}
         </Box>
+        <Divider />
+        <Button
+          sx={{
+            mt: 1,
+            textTransform: 'none',
+          }}
+          variant="text"
+          onClick={() => previousForm(1)}
+        >
+          Remember your password?
+        </Button>
       </Box>
     </Box>
   )
 }
 
-export default Login_Form
+export default New_Password_Form

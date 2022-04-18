@@ -1,37 +1,33 @@
 import { LoadingButton } from '@mui/lab'
 import {
   Alert,
-  Box,
   Button,
+  Divider,
   FormLabel,
   TextField,
   Typography,
 } from '@mui/material'
+import { Box } from '@mui/system'
 import { useState } from 'react'
 
 interface Props {
-  nextForm?: any
+  nextForm(): any
+  previousForm(formId?: number): any
 }
-
-const Login_Form: React.FC<Props> = (props) => {
-  const { nextForm } = props
-  const [username, setUsername] = useState<string>('')
-  const [password, setPassword] = useState<string>('')
+const Confirmation_Code_Form: React.FC<Props> = (props) => {
+  const { previousForm, nextForm } = props
+  const [confirmationCode, setConfirmationCode] = useState<string>('')
   const [loading, setLoading] = useState<boolean>(false)
   const [error, setError] = useState<boolean>(false)
 
-  const login_handler = (e: any) => {
+  const confirmation_code_handler = (e: any) => {
     e.preventDefault()
-    alert(
-      `Hey ${username ? username : 'Test'} you are logged in with ${password ? password : 'Test'
-      } password`
-    )
+    alert(`Hey you are write this confirmation code ${confirmationCode}`)
     setLoading(true)
     setError(true)
     setTimeout(() => {
       nextForm()
-      setUsername('')
-      setPassword('')
+      setConfirmationCode('')
       setLoading(false)
       setError(false)
     }, 2000)
@@ -50,7 +46,7 @@ const Login_Form: React.FC<Props> = (props) => {
         variant="h5"
         component="div"
       >
-        Log In
+        Confirmation Code
       </Typography>
       <Box
         sx={{
@@ -69,49 +65,33 @@ const Login_Form: React.FC<Props> = (props) => {
       </Box>
       <Box
         component="form"
-        sx={{ mt: '30px' }}
-        onSubmit={(e: any) => login_handler(e)}
+        sx={{ mt: '40px' }}
+        onSubmit={(e: any) => confirmation_code_handler(e)}
       >
         <Box>
           <FormLabel sx={{ color: '#323232', ml: 1, fontWeight: '500' }}>
-            Username
+            Confirmation Code
           </FormLabel>
           <TextField
-            id="username"
-            name="username"
-            type="text"
-            placeholder="Input your username here"
+            id="confirmation_code"
+            name="confirmation_code"
+            type="number"
+            placeholder="Input your confirmation code here"
             fullWidth
             margin="dense"
-            onChange={(e) => setUsername(e.target.value)}
+            onChange={(e) => setConfirmationCode(e.target.value)}
+            sx={{
+              '& .MuiOutlinedInput-input': {
+                '&::-webkit-outer-spin-button, &::-webkit-inner-spin-button': {
+                  WebkitAppearance: 'none',
+                },
+              },
+            }}
           />
         </Box>
-        <Box mt={2}>
-          <FormLabel sx={{ color: '#323232', ml: 1, fontWeight: '500' }}>
-            Password
-          </FormLabel>
-          <TextField
-            id="password"
-            name="password"
-            type="password"
-            placeholder="Input your password here"
-            fullWidth
-            margin="dense"
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <Box display="flex" justifyContent="end">
-            <Button
-              variant="text"
-              sx={{
-                fontSize: '16px',
-                textTransform: 'none',
-              }}
-              onClick={nextForm}
-            >
-              Forgot Password?
-            </Button>
-          </Box>
-        </Box>
+        <Typography fontSize="small" sx={{ ml: 1 }}>
+          If you did not recieve any confirmation code, please contact us!
+        </Typography>
         <Box
           sx={{
             mt: {
@@ -127,7 +107,7 @@ const Login_Form: React.FC<Props> = (props) => {
             fullWidth
             loading={loading}
           >
-            Log In
+            Submit
           </LoadingButton>
           {error && (
             <Alert severity="error" sx={{ mt: 1 }}>
@@ -135,9 +115,20 @@ const Login_Form: React.FC<Props> = (props) => {
             </Alert>
           )}
         </Box>
+        <Divider />
+        <Button
+          sx={{
+            mt: 1,
+            textTransform: 'none',
+          }}
+          variant="text"
+          onClick={() => previousForm(1)}
+        >
+          Remember your password?
+        </Button>
       </Box>
     </Box>
   )
 }
 
-export default Login_Form
+export default Confirmation_Code_Form
