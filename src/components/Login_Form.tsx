@@ -18,12 +18,13 @@ const Login_Form: React.FC<Props> = (props) => {
   const [username, setUsername] = useState<string>('')
   const [password, setPassword] = useState<string>('')
   const [loading, setLoading] = useState<boolean>(false)
-  const [error, setError] = useState<boolean>(false)
+  const [error, setError] = useState<boolean>(true)
 
   const login_handler = (e: any) => {
     e.preventDefault()
     alert(
-      `Hey ${username ? username : 'Test'} you are logged in with ${password ? password : 'Test'
+      `Hey ${username ? username : 'Test'} you are logged in with ${
+        password ? password : 'Test'
       } password`
     )
     setLoading(true)
@@ -63,7 +64,7 @@ const Login_Form: React.FC<Props> = (props) => {
             width: '80%',
             height: 3,
             bgColor: 'primary.main',
-            mt: 2,
+            mt: 1,
           }}
         />
       </Box>

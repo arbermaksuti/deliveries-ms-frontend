@@ -6,8 +6,8 @@ import {
   FormLabel,
   TextField,
   Typography,
+  Box
 } from '@mui/material'
-import { Box } from '@mui/system'
 import { useState } from 'react'
 
 interface Props {
