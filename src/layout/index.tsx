@@ -114,7 +114,7 @@ const Layout: React.FC<Props> = (props) => {
             onClick={handleRightSidebar}
           >
             <Badge
-              badgeContent={9}
+              badgeContent={1}
               color="primary"
               anchorOrigin={{
                 vertical: 'top',
