@@ -48,7 +48,7 @@ const Layout: React.FC<Props> = (props) => {
     if (smallDevice && openedLeftSidebar) {
       setOpenedLeftSidebar(false)
       setOpenedRightSidbebar(true)
-    } else {
+    } else if (smallDevice) {
       setOpenedRightSidbebar(!openedRightSidebar)
     }
   }
