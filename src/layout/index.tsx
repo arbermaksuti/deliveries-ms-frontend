@@ -30,11 +30,27 @@ const Layout: React.FC<Props> = (props) => {
   )
 
   const [openedLeftSidebar, setOpenedLeftSidebar] = useState<boolean>(false)
-  const [openedRightSidebar, setOpenedRightSidbebar] = useState<boolean>(smallDevice ? false : true)
+  const [openedRightSidebar, setOpenedRightSidbebar] = useState<boolean>(
+    smallDevice ? false : true
+  )
 
-  const handleLeftSidebar = () => setOpenedLeftSidebar(!openedLeftSidebar)
+  const handleLeftSidebar = () => {
+    if (smallDevice && openedRightSidebar) {
+      setOpenedRightSidbebar(false)
+      setOpenedLeftSidebar(true)
+    }
+    else {
+      setOpenedLeftSidebar(!openedLeftSidebar)
+    }
+  }
+
   const handleRightSidebar = () => {
-    smallDevice && setOpenedRightSidbebar(!openedRightSidebar)
+    if (smallDevice && openedLeftSidebar) {
+      setOpenedLeftSidebar(false)
+      setOpenedRightSidbebar(true)
+    } else {
+      setOpenedRightSidbebar(!openedRightSidebar)
+    }
   }
 
   return (
@@ -70,7 +86,6 @@ const Layout: React.FC<Props> = (props) => {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            overflow: 'hidden',
           }}
           onClick={handleLeftSidebar}
         >
@@ -120,7 +135,6 @@ const Layout: React.FC<Props> = (props) => {
                 vertical: 'top',
                 horizontal: 'left',
               }}
-            // overlap="rectangular"
             >
               <ShoppingCartOutlined />
             </Badge>
