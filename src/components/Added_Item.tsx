@@ -1,7 +1,6 @@
-import { Close } from '@mui/icons-material'
-import { Box, CircularProgress, IconButton, Typography } from '@mui/material'
+import { KeyboardArrowDown } from '@mui/icons-material'
+import { Box, Button, CircularProgress, Typography } from '@mui/material'
 import { useState } from 'react'
-import { colors } from 'src/utils/colors'
 
 interface Props {
   id: number | string
@@ -9,12 +8,12 @@ interface Props {
   quantity: number | string
   name: string
   price: number | string
-  smallDevice: boolean
+  description: string
   loading: number | string
   onRemove: (id: any) => void
 }
 const Added_Item: React.FC<Props> = (props) => {
-  const { id, img, quantity, name, price, smallDevice, loading, onRemove } =
+  const { id, img, quantity, name, price, description, loading, onRemove } =
     props
   const [removeItem, setRemoveItem] = useState<boolean>(false)
 
@@ -24,48 +23,33 @@ const Added_Item: React.FC<Props> = (props) => {
         mb: 1,
         border: '1px solid rgba(0, 0, 0, 0.23)',
         borderRadius: '8px',
-        px: 1.5,
-        py: 0.8,
-        height: '60px',
-        position: 'relative',
+        p: 1.5,
+        pb: removeItem ? 1 : 1.5,
         overflow: 'hidden',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-      }}
-      onMouseEnter={() => {
-        !smallDevice && setRemoveItem(true)
-      }}
-      onMouseLeave={() => {
-        !smallDevice && setRemoveItem(false)
-      }}
-      onClick={() => {
-        smallDevice && setRemoveItem(!removeItem)
+        height: removeItem ? 'fit-content' : '60px',
+        transition: 'all 0.2s',
       }}
     >
       {loading === id ? (
-        <CircularProgress />
-      ) : (
         <Box
           sx={{
-            position: 'absolute',
-            top: removeItem ? '-62px' : 0,
-            bottom: 0,
-            left: 0,
-            right: 0,
-            transition: 'top 0.2s',
-            overflow: 'hidden',
+            maxHeight: `calc(60px - 24px - 2px)`,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
           }}
         >
+          <CircularProgress />
+        </Box>
+      ) : (
+        <>
           <Box
             sx={{
-              height: '100%',
-              maxHeight: '60px',
-              width: '100%',
+              maxHeight: `calc(60px - 24px - 2px)`,
               display: 'flex',
               alignItems: 'center',
-              px: 1.5,
-              py: 0.8,
+              margin: 'auto',
+              position: 'relative',
             }}
           >
             <img src={img} alt="Product" width={40} />
@@ -83,28 +67,47 @@ const Added_Item: React.FC<Props> = (props) => {
             >
               {price}€
             </Typography>
+            {!removeItem && (
+              <Box
+                sx={{
+                  position: 'absolute',
+                  bottom: '-14px',
+                  right: '-5px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  cursor: 'pointer',
+                }}
+                onClick={() => setRemoveItem(true)}
+              >
+                <Typography fontSize="small">Më shumë</Typography>
+                <KeyboardArrowDown fontSize="small" />
+              </Box>
+            )}
           </Box>
           <Box
-            sx={{
-              height: '100%',
-              maxHeight: '60px',
-              width: '100%',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              px: 1.5,
-              py: 0.8,
-              backgroundColor: '#ee2400',
-            }}
+            sx={{ mt: 1, pl: 0.5, display: 'flex', flexDirection: 'column' }}
           >
-            <Typography sx={{ fontSize: 'small', color: colors.default_white }}>
-              Dëshiroj të e largoj këtë porosi!
-            </Typography>
-            <IconButton onClick={onRemove}>
-              <Close sx={{ color: colors.default_white }} />
-            </IconButton>
+            <Typography sx={{ fontSize: '14px' }}>{description}</Typography>
+            <Box sx={{ alignSelf: 'end', mt: 0.5 }}>
+              <Button
+                variant="contained"
+                size="small"
+                sx={{ mr: 1 }}
+                onClick={() => setRemoveItem(false)}
+              >
+                Mbyll
+              </Button>
+              <Button
+                variant="contained"
+                size="small"
+                color="error"
+                onClick={onRemove}
+              >
+                Fshij
+              </Button>
+            </Box>
           </Box>
-        </Box>
+        </>
       )}
     </Box>
   )

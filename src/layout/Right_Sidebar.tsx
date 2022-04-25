@@ -6,9 +6,30 @@ import { colors } from 'src/utils/colors'
 import { navbar_height, rightSidebar_width } from 'src/utils/consts'
 
 const added_items = [
-  { id: 1, img: '/logo192.png', quantity: 2, name: 'Quesadillas', price: 2.54 },
-  { id: 2, img: '/logo192.png', quantity: 2, name: 'Quesadillas', price: 2.54 },
-  { id: 3, img: '/logo192.png', quantity: 2, name: 'Quesadillas', price: 2.54 },
+  {
+    id: 1,
+    img: '/logo192.png',
+    quantity: 2,
+    name: 'Quesadillas',
+    price: 2.54,
+    description: 'Just for testing',
+  },
+  {
+    id: 2,
+    img: '/logo192.png',
+    quantity: 2,
+    name: 'Quesadillas',
+    price: 2.54,
+    description: 'Just for testing',
+  },
+  {
+    id: 3,
+    img: '/logo192.png',
+    quantity: 2,
+    name: 'Quesadillas',
+    price: 2.54,
+    description: 'Just for testing',
+  },
 ]
 
 interface Props {
@@ -57,7 +78,6 @@ const Right_Sidebar: React.FC<Props> = (props) => {
           <Added_Item
             {...item}
             key={item.id}
-            smallDevice={smallDevice}
             loading={loading}
             onRemove={() => remove_item_handler(item.id)}
           />
