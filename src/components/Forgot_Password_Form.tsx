@@ -47,7 +47,7 @@ const Forgot_Password_Form: React.FC<Props> = (props) => {
         variant="h5"
         component="div"
       >
-        Forgot Password?
+        Kam harruar fjalëkalimin
       </Typography>
       <Box
         sx={{
@@ -77,14 +77,14 @@ const Forgot_Password_Form: React.FC<Props> = (props) => {
             id="email"
             name="email"
             type="email"
-            placeholder="Input your email here"
+            placeholder="Shkruaj email-in këtu"
             fullWidth
             margin="dense"
             onChange={(e) => setEmail(e.target.value)}
           />
         </Box>
         <Typography fontSize="small" sx={{ ml: 1 }}>
-          You will receive one 6 character code on this email!
+          Ju do të pranoni një kod 6 shifror në këtë email!
         </Typography>
         <Box
           sx={{
@@ -101,11 +101,11 @@ const Forgot_Password_Form: React.FC<Props> = (props) => {
             fullWidth
             loading={loading}
           >
-            Send Code
+            Dërgo kodin
           </LoadingButton>
           {error && (
             <Alert severity="error" sx={{ mt: 1 }}>
-              Just for test!
+              Vetëm për testim!
             </Alert>
           )}
         </Box>
@@ -118,7 +118,7 @@ const Forgot_Password_Form: React.FC<Props> = (props) => {
           variant="text"
           onClick={() => previousForm()}
         >
-          Remember your password?
+          Po e kujtoj fjalëkalimin?
         </Button>
       </Box>
     </Box>

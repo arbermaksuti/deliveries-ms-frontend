@@ -6,7 +6,7 @@ import {
   FormLabel,
   TextField,
   Typography,
-  Box
+  Box,
 } from '@mui/material'
 import { useState } from 'react'
 
@@ -40,13 +40,8 @@ const Confirmation_Code_Form: React.FC<Props> = (props) => {
         width: '100%',
       }}
     >
-      <Typography
-        gutterBottom
-        textAlign={'center'}
-        variant="h5"
-        component="div"
-      >
-        Confirmation Code
+      <Typography gutterBottom textAlign="center" variant="h5" component="div">
+        Kodi i konfirmimit
       </Typography>
       <Box
         sx={{
@@ -70,13 +65,13 @@ const Confirmation_Code_Form: React.FC<Props> = (props) => {
       >
         <Box>
           <FormLabel sx={{ color: '#323232', ml: 1, fontWeight: '500' }}>
-            Confirmation Code
+            Kodi i konfirmimit
           </FormLabel>
           <TextField
             id="confirmation_code"
             name="confirmation_code"
             type="number"
-            placeholder="Input your confirmation code here"
+            placeholder="Shkruaj kodin e konfirmimit këtu"
             fullWidth
             margin="dense"
             onChange={(e) => setConfirmationCode(e.target.value)}
@@ -90,7 +85,8 @@ const Confirmation_Code_Form: React.FC<Props> = (props) => {
           />
         </Box>
         <Typography fontSize="small" sx={{ ml: 1 }}>
-          If you did not recieve any confirmation code, please contact us!
+          Nëse ju nuk keni pranuar kodin e konfirmimit, ju lutem na
+          <a href="/"> kontaktoni!</a>
         </Typography>
         <Box
           sx={{
@@ -107,11 +103,11 @@ const Confirmation_Code_Form: React.FC<Props> = (props) => {
             fullWidth
             loading={loading}
           >
-            Submit
+            Vazhdo
           </LoadingButton>
           {error && (
             <Alert severity="error" sx={{ mt: 1 }}>
-              Just for test!
+              Vetëm për testim!
             </Alert>
           )}
         </Box>
@@ -124,7 +120,7 @@ const Confirmation_Code_Form: React.FC<Props> = (props) => {
           variant="text"
           onClick={() => previousForm(1)}
         >
-          Remember your password?
+          Po e kujtoj fjalëkalimin?
         </Button>
       </Box>
     </Box>

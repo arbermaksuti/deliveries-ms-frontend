@@ -11,7 +11,7 @@ const Login_Container = () => {
   const containerRef = useRef<any>(null)
   const [activeForm, setActiveForm] = useState<number>(1)
   const nextForm = () => {
-    setActiveForm(activeForm < forms.length ? activeForm + 1 : activeForm)
+    setActiveForm(activeForm < forms.length ? activeForm + 1 : 1)
   }
   const previousForm = (formId?: number) => {
     setActiveForm(

@@ -51,7 +51,7 @@ const Login_Form: React.FC<Props> = (props) => {
         variant="h5"
         component="div"
       >
-        Log In
+        Kyçu
       </Typography>
       <Box
         sx={{
@@ -75,13 +75,13 @@ const Login_Form: React.FC<Props> = (props) => {
       >
         <Box>
           <FormLabel sx={{ color: '#323232', ml: 1, fontWeight: '500' }}>
-            Username
+            Emri i përdoruesit
           </FormLabel>
           <TextField
             id="username"
             name="username"
             type="text"
-            placeholder="Input your username here"
+            placeholder="Shkruaj emrin e përdoruesit këtu"
             fullWidth
             margin="dense"
             onChange={(e) => setUsername(e.target.value)}
@@ -89,13 +89,13 @@ const Login_Form: React.FC<Props> = (props) => {
         </Box>
         <Box mt={2}>
           <FormLabel sx={{ color: '#323232', ml: 1, fontWeight: '500' }}>
-            Password
+            Fjalëkalimi
           </FormLabel>
           <TextField
             id="password"
             name="password"
             type="password"
-            placeholder="Input your password here"
+            placeholder="Shkruaj fjalëkalimin këtu"
             fullWidth
             margin="dense"
             onChange={(e) => setPassword(e.target.value)}
@@ -109,7 +109,7 @@ const Login_Form: React.FC<Props> = (props) => {
               }}
               onClick={nextForm}
             >
-              Forgot Password?
+              Kam harruar fjalëkalimin?
             </Button>
           </Box>
         </Box>
@@ -128,11 +128,11 @@ const Login_Form: React.FC<Props> = (props) => {
             fullWidth
             loading={loading}
           >
-            Log In
+            Kyçu
           </LoadingButton>
           {error && (
             <Alert severity="error" sx={{ mt: 1 }}>
-              Just for test!
+              Vetëm për testim!
             </Alert>
           )}
         </Box>
