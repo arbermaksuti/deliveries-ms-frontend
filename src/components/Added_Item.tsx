@@ -26,8 +26,8 @@ const Added_Item: React.FC<Props> = (props) => {
         p: 1.5,
         pb: removeItem ? 1 : 1.5,
         overflow: 'hidden',
-        height: removeItem ? 'fit-content' : '60px',
-        transition: 'all 0.2s',
+        maxHeight: removeItem ? '200px' : '60px',
+        transition: 'all 0.2s linear',
       }}
     >
       {loading === id ? (
@@ -85,25 +85,30 @@ const Added_Item: React.FC<Props> = (props) => {
             )}
           </Box>
           <Box
-            sx={{ mt: 1, pl: 0.5, display: 'flex', flexDirection: 'column' }}
+            sx={{
+              mt: 1,
+              pl: 0.5,
+              display: 'flex',
+              flexDirection: 'column',
+            }}
           >
             <Typography sx={{ fontSize: '14px' }}>{description}</Typography>
-            <Box sx={{ alignSelf: 'end', mt: 0.5 }}>
-              <Button
-                variant="contained"
-                size="small"
-                sx={{ mr: 1 }}
-                onClick={() => setRemoveItem(false)}
-              >
-                Mbyll
-              </Button>
+            <Box sx={{ ml: 'auto', mt: 0.5 }}>
               <Button
                 variant="contained"
                 size="small"
                 color="error"
+                sx={{ mr: 1 }}
                 onClick={onRemove}
               >
                 Fshij
+              </Button>
+              <Button
+                variant="contained"
+                size="small"
+                onClick={() => setRemoveItem(false)}
+              >
+                Mbyll
               </Button>
             </Box>
           </Box>
