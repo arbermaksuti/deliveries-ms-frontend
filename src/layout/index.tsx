@@ -38,8 +38,7 @@ const Layout: React.FC<Props> = (props) => {
     if (smallDevice && openedRightSidebar) {
       setOpenedRightSidbebar(false)
       setOpenedLeftSidebar(true)
-    }
-    else {
+    } else {
       setOpenedLeftSidebar(!openedLeftSidebar)
     }
   }
@@ -80,7 +79,7 @@ const Layout: React.FC<Props> = (props) => {
             borderLeft: 'none',
             borderRadius: 0,
             backgroundColor: '#fff',
-            zIndex: '10000',
+            zIndex: '1200',
             transition: `left 0.28s`,
             borderBottomRightRadius: '20px',
             display: 'flex',
@@ -106,7 +105,7 @@ const Layout: React.FC<Props> = (props) => {
             borderRight: 'none',
             borderRadius: 0,
             backgroundColor: '#fff',
-            zIndex: '10000',
+            zIndex: '1200',
             transition: `right 0.28s`,
             display: 'flex',
             alignItems: 'center',
@@ -122,8 +121,8 @@ const Layout: React.FC<Props> = (props) => {
             sx={{
               '&:hover': !smallDevice
                 ? {
-                  cursor: 'context-menu',
-                }
+                    cursor: 'context-menu',
+                  }
                 : {},
             }}
             onClick={handleRightSidebar}

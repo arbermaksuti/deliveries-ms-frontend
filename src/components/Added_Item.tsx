@@ -72,7 +72,7 @@ const Added_Item: React.FC<Props> = (props) => {
                 sx={{
                   position: 'absolute',
                   bottom: '-14px',
-                  right: '-5px',
+                  right: '-10px',
                   display: 'flex',
                   alignItems: 'center',
                   cursor: 'pointer',
