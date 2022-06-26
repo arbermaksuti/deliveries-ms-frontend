@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/jsx-pascal-case */
 import { AddCircleOutlined, DeleteOutlined } from '@mui/icons-material'
 import {
@@ -14,7 +15,7 @@ import {
   TextField,
   Typography,
 } from '@mui/material'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Added_Item from 'src/components/Added_Item'
 import { colors } from 'src/utils/colors'
 import { navbar_height, rightSidebar_width } from 'src/utils/consts'
@@ -57,9 +58,12 @@ const Right_Sidebar: React.FC<Props> = (props) => {
   const { openedSidebar, closedSidebar, smallDevice } = props
   const [items, setItems] = useState<any>(added_items)
   const [loading, setLoading] = useState<number | string>('')
+  const [discount, setDiscount] = useState<string>('0')
+  const [price, setPrice] = useState<number>(2.54)
+  const [discountedPrice, setDiscountedPrice] = useState<number>(price)
   const [openedDialog, setOpenedDialog] = useState<any>({
     type: 'create_order',
-    show: true,
+    show: false,
   })
 
   const remove_item_handler = (id: any) => {
@@ -70,6 +74,13 @@ const Right_Sidebar: React.FC<Props> = (props) => {
       setLoading('')
     }, 1000)
   }
+
+  useEffect(() => {
+    setDiscountedPrice(
+      parseFloat((price - (price / 100) * parseInt(discount)).toFixed(2))
+    )
+  }, [discount])
+
   return (
     <>
       <Drawer
@@ -126,14 +137,16 @@ const Right_Sidebar: React.FC<Props> = (props) => {
             <Box>
               <Typography>
                 Total:{' '}
-                <span style={{ fontWeight: 600, fontSize: '18px' }}>2.54€</span>
+                <span style={{ fontWeight: 600, fontSize: '18px' }}>
+                  {price}€
+                </span>
               </Typography>
               <Typography>
                 Total me zbritje:{' '}
                 <span
                   style={{ fontWeight: 600, fontSize: '20px', lineHeight: 1 }}
                 >
-                  2.54€
+                  {discountedPrice}€
                 </span>
               </Typography>
             </Box>
@@ -143,10 +156,8 @@ const Right_Sidebar: React.FC<Props> = (props) => {
                 label="Zbritje (%)"
                 labelId="zbritje"
                 id="zbritje-select"
-                defaultValue="no"
-                value="0"
-                // value={discount}
-                // onChange={(e) => setDiscount(e.target.value)}
+                value={discount}
+                onChange={(e) => setDiscount(e.target.value)}
               >
                 <MenuItem value={0}>
                   <em>Jo</em>
