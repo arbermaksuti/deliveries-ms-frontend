@@ -31,7 +31,7 @@ const DashbordContainer = () => {
           variant="outlined"
           size="small"
           sx={{
-            ml: { lg: 5 },
+            ml: { sm: 2, lg: 6 },
             ' >.MuiOutlinedInput-root': { borderRadius: '8px' },
           }}
         />

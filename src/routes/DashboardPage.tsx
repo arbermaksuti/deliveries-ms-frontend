@@ -1,6 +1,6 @@
 import Layout from '../layout'
 import DashboardContainer from 'src/containers/DashbordContainer'
-const Dashboard = () => {
+const DashboardPage = () => {
   return (
     <Layout>
       <DashboardContainer />
@@ -8,4 +8,4 @@ const Dashboard = () => {
   )
 }
 
-export default Dashboard
+export default DashboardPage

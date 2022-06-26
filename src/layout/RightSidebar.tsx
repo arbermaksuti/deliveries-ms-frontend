@@ -113,7 +113,7 @@ const RightSidebar: React.FC<Props> = (props) => {
             <Typography
               align="center"
               variant="h6"
-              sx={{ mb: 1 }}
+              sx={{ mb: 2 }}
               fontWeight={500}
             >
               Porosia e re
