@@ -9,6 +9,7 @@ import {
   Alert,
 } from '@mui/material'
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 interface Props {
   nextForm(): any
@@ -20,6 +21,7 @@ const New_Password_Form: React.FC<Props> = (props) => {
   const [confirmNewPassword, setConfirmNewPassword] = useState<string>('')
   const [loading, setLoading] = useState<boolean>(false)
   const [error, setError] = useState<boolean>(false)
+  const navigate = useNavigate()
 
   const new_password_handler = (e: any) => {
     e.preventDefault()
@@ -29,6 +31,7 @@ const New_Password_Form: React.FC<Props> = (props) => {
     setLoading(true)
     setError(true)
     setTimeout(() => {
+      navigate('/dashboard')
       nextForm()
       setNewPassword('')
       setConfirmNewPassword('')
@@ -50,7 +53,7 @@ const New_Password_Form: React.FC<Props> = (props) => {
         variant="h5"
         component="div"
       >
-        New Password
+        Fjalëkalimi i ri
       </Typography>
       <Box
         sx={{
@@ -74,13 +77,13 @@ const New_Password_Form: React.FC<Props> = (props) => {
       >
         <Box>
           <FormLabel sx={{ color: '#323232', ml: 1, fontWeight: '500' }}>
-            New Password
+            Fjalëkalimi i ri
           </FormLabel>
           <TextField
             id="new_password"
             name="new_password"
             type="text"
-            placeholder="Input your new password here"
+            placeholder="Shkruani fjalëkalimin e ri këtu"
             fullWidth
             margin="dense"
             onChange={(e) => setNewPassword(e.target.value)}
@@ -88,21 +91,18 @@ const New_Password_Form: React.FC<Props> = (props) => {
         </Box>
         <Box sx={{ mt: 2 }}>
           <FormLabel sx={{ color: '#323232', ml: 1, fontWeight: '500' }}>
-            Confirm New Password
+            Rishkruani fjalëkalimin e ri
           </FormLabel>
           <TextField
             id="confirm_new_password"
             name="confirm_new_password"
             type="text"
-            placeholder="Write your new password here again"
+            placeholder="Rishkruani fjalëkalimin e ri këtu"
             fullWidth
             margin="dense"
             onChange={(e) => setConfirmNewPassword(e.target.value)}
           />
         </Box>
-        {/* <Typography fontSize="small" sx={{ ml: 1 }}>
-                    You will receive one 6 character code on this email!
-                </Typography> */}
         <Box
           sx={{
             mt: {
@@ -118,25 +118,29 @@ const New_Password_Form: React.FC<Props> = (props) => {
             fullWidth
             loading={loading}
           >
-            Submit
+            Ndërro fjalëkalimin
           </LoadingButton>
           {error && (
             <Alert severity="error" sx={{ mt: 1 }}>
-              Just for test!
+              Vetëm për testim!
             </Alert>
           )}
         </Box>
-        <Divider />
-        <Button
-          sx={{
-            mt: 1,
-            textTransform: 'none',
-          }}
-          variant="text"
-          onClick={() => previousForm(1)}
-        >
-          Remember your password?
-        </Button>
+        {!error && (
+          <>
+            <Divider />
+            <Button
+              sx={{
+                mt: 1,
+                textTransform: 'none',
+              }}
+              variant="text"
+              onClick={() => previousForm(1)}
+            >
+              Po e kujtoj fjalëkalimin?
+            </Button>
+          </>
+        )}
       </Box>
     </Box>
   )

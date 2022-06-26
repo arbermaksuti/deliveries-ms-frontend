@@ -11,13 +11,12 @@ const Login_Container = () => {
   const containerRef = useRef<any>(null)
   const [activeForm, setActiveForm] = useState<number>(1)
   const nextForm = () => {
-    setActiveForm(activeForm < forms.length ? activeForm + 1 : activeForm)
+    setActiveForm(activeForm < forms.length ? activeForm + 1 : 1)
   }
   const previousForm = (formId?: number) => {
     setActiveForm(
-      formId ? formId : (activeForm > 1 ? activeForm - 1 : activeForm)
+      formId ? formId : activeForm > 1 ? activeForm - 1 : activeForm
     )
-
   }
   const forms = [
     <Login_Form nextForm={nextForm} />,
@@ -51,12 +50,16 @@ const Login_Container = () => {
             display="flex"
             justifyContent="center"
             alignItems="center"
-            sx={{ height: '100%', mb: { xs: 10 } }}
+            sx={{
+              mx: 'auto',
+              height: '100%',
+              mb: { xs: 6 },
+            }}
           >
             <Box display="flex" flexDirection="column" alignItems="center">
               <Box
                 sx={{
-                  width: {
+                  maxWidth: {
                     xs: 100,
                     md: 150,
                     lg: 180,
@@ -65,7 +68,11 @@ const Login_Container = () => {
               >
                 <img src="/logo192.png" alt="logo" width="100%" height="100%" />
               </Box>
-              <Typography variant="h2" fontWeight="500" letterSpacing={10}>
+              <Typography
+                variant="h2"
+                fontWeight="500"
+                sx={{ letterSpacing: { xs: 5, lg: 10 } }}
+              >
                 Deliveries
               </Typography>
               <Typography variant="h5">Management System</Typography>
@@ -78,7 +85,7 @@ const Login_Container = () => {
               width: { xs: '100%', lg: '90%' },
               height: '500px',
               borderRadius: '8px',
-              background: '#fff',
+              background: colors.default_white,
               overflow: 'hidden',
             }}
             ref={containerRef}
@@ -99,13 +106,13 @@ const Login_Container = () => {
                       width: '100%',
                       height: '100%',
                       borderRadius: '8px',
-                      background: '#fff',
+                      background: colors.default_white,
                       py: {
                         xs: 5,
                         lg: '40px',
                       },
                       px: {
-                        xs: 5,
+                        xs: 3,
                         md: '80px',
                       },
                     }}
