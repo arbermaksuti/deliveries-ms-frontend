@@ -4,31 +4,37 @@ import {
   Typography,
   FormLabel,
   TextField,
-  Button,
   Divider,
+  Button,
   Alert,
 } from '@mui/material'
-import { useState } from 'react'
+import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 interface Props {
   nextForm(): any
-  previousForm(): any
+  previousForm(formId?: number): any
 }
-
-const Forgot_Password_Form: React.FC<Props> = (props) => {
+const NewPasswordForm: React.FC<Props> = (props) => {
   const { previousForm, nextForm } = props
-  const [email, setEmail] = useState<string>('')
+  const [newPassword, setNewPassword] = useState<string>('')
+  const [confirmNewPassword, setConfirmNewPassword] = useState<string>('')
   const [loading, setLoading] = useState<boolean>(false)
   const [error, setError] = useState<boolean>(false)
+  const navigate = useNavigate()
 
-  const forgot_password_handler = (e: any) => {
+  const new_password_handler = (e: any) => {
     e.preventDefault()
-    alert(`Hey you are write this email ${email}`)
+    alert(
+      `Hey you are write this new password ${newPassword} ${confirmNewPassword}`
+    )
     setLoading(true)
     setError(true)
     setTimeout(() => {
+      navigate('/dashboard')
       nextForm()
-      setEmail('')
+      setNewPassword('')
+      setConfirmNewPassword('')
       setLoading(false)
       setError(false)
     }, 2000)
@@ -47,7 +53,7 @@ const Forgot_Password_Form: React.FC<Props> = (props) => {
         variant="h5"
         component="div"
       >
-        Kam harruar fjalëkalimin
+        Fjalëkalimi i ri
       </Typography>
       <Box
         sx={{
@@ -67,25 +73,36 @@ const Forgot_Password_Form: React.FC<Props> = (props) => {
       <Box
         component="form"
         sx={{ mt: '40px' }}
-        onSubmit={(e: any) => forgot_password_handler(e)}
+        onSubmit={(e: any) => new_password_handler(e)}
       >
         <Box>
           <FormLabel sx={{ color: '#323232', ml: 1, fontWeight: '500' }}>
-            Email
+            Fjalëkalimi i ri
           </FormLabel>
           <TextField
-            id="email"
-            name="email"
-            type="email"
-            placeholder="Shkruaj email-in këtu"
+            id="new_password"
+            name="new_password"
+            type="text"
+            placeholder="Shkruani fjalëkalimin e ri këtu"
             fullWidth
             margin="dense"
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => setNewPassword(e.target.value)}
           />
         </Box>
-        <Typography fontSize="small" sx={{ ml: 1 }}>
-          Ju do të pranoni një kod 6 shifror në këtë email!
-        </Typography>
+        <Box sx={{ mt: 2 }}>
+          <FormLabel sx={{ color: '#323232', ml: 1, fontWeight: '500' }}>
+            Rishkruani fjalëkalimin e ri
+          </FormLabel>
+          <TextField
+            id="confirm_new_password"
+            name="confirm_new_password"
+            type="text"
+            placeholder="Rishkruani fjalëkalimin e ri këtu"
+            fullWidth
+            margin="dense"
+            onChange={(e) => setConfirmNewPassword(e.target.value)}
+          />
+        </Box>
         <Box
           sx={{
             mt: {
@@ -101,7 +118,7 @@ const Forgot_Password_Form: React.FC<Props> = (props) => {
             fullWidth
             loading={loading}
           >
-            Dërgo kodin
+            Ndërro fjalëkalimin
           </LoadingButton>
           {error && (
             <Alert severity="error" sx={{ mt: 1 }}>
@@ -109,20 +126,24 @@ const Forgot_Password_Form: React.FC<Props> = (props) => {
             </Alert>
           )}
         </Box>
-        <Divider />
-        <Button
-          sx={{
-            mt: 1,
-            textTransform: 'none',
-          }}
-          variant="text"
-          onClick={() => previousForm()}
-        >
-          Po e kujtoj fjalëkalimin?
-        </Button>
+        {!error && (
+          <>
+            <Divider />
+            <Button
+              sx={{
+                mt: 1,
+                textTransform: 'none',
+              }}
+              variant="text"
+              onClick={() => previousForm(1)}
+            >
+              Po e kujtoj fjalëkalimin?
+            </Button>
+          </>
+        )}
       </Box>
     </Box>
   )
 }
 
-export default Forgot_Password_Form
+export default NewPasswordForm

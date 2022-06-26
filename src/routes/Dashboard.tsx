@@ -1,8 +1,9 @@
 import Layout from '../layout'
+import DashboardContainer from 'src/containers/DashbordContainer'
 const Dashboard = () => {
   return (
     <Layout>
-      <p>Test</p>
+      <DashboardContainer />
     </Layout>
   )
 }

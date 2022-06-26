@@ -16,11 +16,11 @@ import {
   Typography,
 } from '@mui/material'
 import { useEffect, useState } from 'react'
-import Added_Item from 'src/components/Added_Item'
+import Added_Item from 'src/components/AddedItem'
 import { colors } from 'src/utils/colors'
 import { navbar_height, rightSidebar_width } from 'src/utils/consts'
-import Dynamic_Dialog from 'src/components/Dynamic_Dialog'
-import Order_Dialog from 'src/components/Order_Dialog'
+import Dynamic_Dialog from 'src/components/DynamicDialog'
+import Order_Dialog from 'src/components/OrderDialog'
 
 const added_items = [
   {
@@ -54,7 +54,7 @@ interface Props {
   closedSidebar: () => void
   smallDevice: boolean
 }
-const Right_Sidebar: React.FC<Props> = (props) => {
+const RightSidebar: React.FC<Props> = (props) => {
   const { openedSidebar, closedSidebar, smallDevice } = props
   const [items, setItems] = useState<any>(added_items)
   const [loading, setLoading] = useState<number | string>('')
@@ -277,4 +277,4 @@ const Right_Sidebar: React.FC<Props> = (props) => {
   )
 }
 
-export default Right_Sidebar
+export default RightSidebar

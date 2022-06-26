@@ -2,7 +2,7 @@
 import { ReactNode, useState } from 'react'
 import { Badge, Box, IconButton, useMediaQuery } from '@mui/material'
 import Header from './Header'
-import Left_Sidebar from './Left_Sidebar'
+import Left_Sidebar from './LeftSidebar'
 import {
   leftSidebar_width,
   navbar_height,
@@ -14,7 +14,7 @@ import {
   ShoppingCartOutlined,
 } from '@mui/icons-material'
 import { colors } from 'src/utils/colors'
-import Right_Sidebar from './Right_Sidebar'
+import Right_Sidebar from './RightSidebar'
 
 interface Props {
   children: ReactNode

@@ -14,7 +14,7 @@ interface Props {
   nextForm(): any
   previousForm(formId?: number): any
 }
-const Confirmation_Code_Form: React.FC<Props> = (props) => {
+const ConfirmationCodeForm: React.FC<Props> = (props) => {
   const { previousForm, nextForm } = props
   const [confirmationCode, setConfirmationCode] = useState<string>('')
   const [loading, setLoading] = useState<boolean>(false)
@@ -127,4 +127,4 @@ const Confirmation_Code_Form: React.FC<Props> = (props) => {
   )
 }
 
-export default Confirmation_Code_Form
+export default ConfirmationCodeForm

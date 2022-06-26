@@ -11,7 +11,7 @@ interface Props {
   onSubmit?: () => void
 }
 
-const Dynamic_Dialog: React.FC<Props> = (props) => {
+const DynamicDialog: React.FC<Props> = (props) => {
   const {
     opened,
     onClose,
@@ -36,4 +36,4 @@ const Dynamic_Dialog: React.FC<Props> = (props) => {
   )
 }
 
-export default Dynamic_Dialog
+export default DynamicDialog

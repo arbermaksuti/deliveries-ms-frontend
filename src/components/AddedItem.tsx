@@ -12,7 +12,7 @@ interface Props {
   loading: number | string
   onRemove: (id: any) => void
 }
-const Added_Item: React.FC<Props> = (props) => {
+const AddedItem: React.FC<Props> = (props) => {
   const { id, img, quantity, name, price, description, loading, onRemove } =
     props
   const [removeItem, setRemoveItem] = useState<boolean>(false)
@@ -118,4 +118,4 @@ const Added_Item: React.FC<Props> = (props) => {
   )
 }
 
-export default Added_Item
+export default AddedItem

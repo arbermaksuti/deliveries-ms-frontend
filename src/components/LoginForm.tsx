@@ -1,40 +1,38 @@
 import { LoadingButton } from '@mui/lab'
 import {
+  Alert,
   Box,
-  Typography,
+  Button,
   FormLabel,
   TextField,
-  Divider,
-  Button,
-  Alert,
+  Typography,
 } from '@mui/material'
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useState } from 'react'
 
 interface Props {
-  nextForm(): any
-  previousForm(formId?: number): any
+  nextForm?: any
 }
-const New_Password_Form: React.FC<Props> = (props) => {
-  const { previousForm, nextForm } = props
-  const [newPassword, setNewPassword] = useState<string>('')
-  const [confirmNewPassword, setConfirmNewPassword] = useState<string>('')
-  const [loading, setLoading] = useState<boolean>(false)
-  const [error, setError] = useState<boolean>(false)
-  const navigate = useNavigate()
 
-  const new_password_handler = (e: any) => {
+const LoginForm: React.FC<Props> = (props) => {
+  const { nextForm } = props
+  const [username, setUsername] = useState<string>('')
+  const [password, setPassword] = useState<string>('')
+  const [loading, setLoading] = useState<boolean>(false)
+  const [error, setError] = useState<boolean>(true)
+
+  const login_handler = (e: any) => {
     e.preventDefault()
     alert(
-      `Hey you are write this new password ${newPassword} ${confirmNewPassword}`
+      `Hey ${username ? username : 'Test'} you are logged in with ${
+        password ? password : 'Test'
+      } password`
     )
     setLoading(true)
     setError(true)
     setTimeout(() => {
-      navigate('/dashboard')
       nextForm()
-      setNewPassword('')
-      setConfirmNewPassword('')
+      setUsername('')
+      setPassword('')
       setLoading(false)
       setError(false)
     }, 2000)
@@ -53,7 +51,7 @@ const New_Password_Form: React.FC<Props> = (props) => {
         variant="h5"
         component="div"
       >
-        Fjalëkalimi i ri
+        Kyçu
       </Typography>
       <Box
         sx={{
@@ -66,42 +64,54 @@ const New_Password_Form: React.FC<Props> = (props) => {
             width: '80%',
             height: 3,
             bgColor: 'primary.main',
-            mt: 2,
+            mt: 1,
           }}
         />
       </Box>
       <Box
         component="form"
-        sx={{ mt: '40px' }}
-        onSubmit={(e: any) => new_password_handler(e)}
+        sx={{ mt: '30px' }}
+        onSubmit={(e: any) => login_handler(e)}
       >
         <Box>
           <FormLabel sx={{ color: '#323232', ml: 1, fontWeight: '500' }}>
-            Fjalëkalimi i ri
+            Emri i përdoruesit
           </FormLabel>
           <TextField
-            id="new_password"
-            name="new_password"
+            id="username"
+            name="username"
             type="text"
-            placeholder="Shkruani fjalëkalimin e ri këtu"
+            placeholder="Shkruaj emrin e përdoruesit këtu"
             fullWidth
             margin="dense"
-            onChange={(e) => setNewPassword(e.target.value)}
+            onChange={(e) => setUsername(e.target.value)}
           />
         </Box>
-        <Box sx={{ mt: 2 }}>
+        <Box mt={2}>
           <FormLabel sx={{ color: '#323232', ml: 1, fontWeight: '500' }}>
-            Rishkruani fjalëkalimin e ri
+            Fjalëkalimi
           </FormLabel>
           <TextField
-            id="confirm_new_password"
-            name="confirm_new_password"
-            type="text"
-            placeholder="Rishkruani fjalëkalimin e ri këtu"
+            id="password"
+            name="password"
+            type="password"
+            placeholder="Shkruaj fjalëkalimin këtu"
             fullWidth
             margin="dense"
-            onChange={(e) => setConfirmNewPassword(e.target.value)}
+            onChange={(e) => setPassword(e.target.value)}
           />
+          <Box display="flex" justifyContent="end">
+            <Button
+              variant="text"
+              sx={{
+                fontSize: '16px',
+                textTransform: 'none',
+              }}
+              onClick={nextForm}
+            >
+              Kam harruar fjalëkalimin?
+            </Button>
+          </Box>
         </Box>
         <Box
           sx={{
@@ -118,7 +128,7 @@ const New_Password_Form: React.FC<Props> = (props) => {
             fullWidth
             loading={loading}
           >
-            Ndërro fjalëkalimin
+            Kyçu
           </LoadingButton>
           {error && (
             <Alert severity="error" sx={{ mt: 1 }}>
@@ -126,24 +136,9 @@ const New_Password_Form: React.FC<Props> = (props) => {
             </Alert>
           )}
         </Box>
-        {!error && (
-          <>
-            <Divider />
-            <Button
-              sx={{
-                mt: 1,
-                textTransform: 'none',
-              }}
-              variant="text"
-              onClick={() => previousForm(1)}
-            >
-              Po e kujtoj fjalëkalimin?
-            </Button>
-          </>
-        )}
       </Box>
     </Box>
   )
 }
 
-export default New_Password_Form
+export default LoginForm

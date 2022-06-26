@@ -1,7 +1,7 @@
 import React from 'react'
 
-const Dashbord_Container = () => {
+const DashbordContainer = () => {
   return <div>Dashbord_Container</div>
 }
 
-export default Dashbord_Container
+export default DashbordContainer

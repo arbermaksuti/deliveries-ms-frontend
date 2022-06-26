@@ -3,7 +3,7 @@ import { Box, Typography } from '@mui/material'
 interface Props {
   type: 'create_order' | 'delete_order'
 }
-const Order_Dialog: React.FC<Props> = (props) => {
+const OrderDialog: React.FC<Props> = (props) => {
   const { type } = props
   return (
     <Box>
@@ -20,4 +20,4 @@ const Order_Dialog: React.FC<Props> = (props) => {
   )
 }
 
-export default Order_Dialog
+export default OrderDialog

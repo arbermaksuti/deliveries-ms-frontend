@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-pascal-case */
-import Login_Container from '../containers/Login_Container'
+import Login_Container from '../containers/LoginContainer'
 
 const Login = () => {
   return (

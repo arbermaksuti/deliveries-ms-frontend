@@ -1,13 +1,13 @@
 /* eslint-disable react/jsx-pascal-case */
 import { Box, Grid, Slide, Typography } from '@mui/material'
 import { useRef, useState } from 'react'
-import Confirmation_Code_Form from 'src/components/Confirmation_Code_Form'
-import Forgot_Password_Form from 'src/components/Forgot_Password_Form'
-import Login_Form from 'src/components/Login_Form'
-import New_Password_Form from 'src/components/New_Password_Form'
+import Confirmation_Code_Form from 'src/components/ConfirmationCodeForm'
+import Forgot_Password_Form from 'src/components/ForgotPasswordForm'
+import Login_Form from 'src/components/LoginForm'
+import New_Password_Form from 'src/components/NewPasswordForm'
 import { colors } from 'src/utils/colors'
 
-const Login_Container = () => {
+const LoginContainer = () => {
   const containerRef = useRef<any>(null)
   const [activeForm, setActiveForm] = useState<number>(1)
   const nextForm = () => {
@@ -129,4 +129,4 @@ const Login_Container = () => {
   )
 }
 
-export default Login_Container
+export default LoginContainer

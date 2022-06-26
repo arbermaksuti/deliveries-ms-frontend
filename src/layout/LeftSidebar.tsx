@@ -18,7 +18,7 @@ interface Props {
   closedSidebar: () => void
   smallDevice: boolean
 }
-const Left_Sidebar: React.FC<Props> = (props) => {
+const LeftSidebar: React.FC<Props> = (props) => {
   const { openedSidebar, closedSidebar, smallDevice } = props
   const location = useLocation()
 
@@ -98,4 +98,4 @@ const Left_Sidebar: React.FC<Props> = (props) => {
   )
 }
 
-export default Left_Sidebar
+export default LeftSidebar
