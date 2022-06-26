@@ -141,7 +141,7 @@ const Layout: React.FC<Props> = (props) => {
         </Box>
         <Box
           sx={{
-            px: 8,
+            px: { xs: 2, sm: 6, lg: 8 },
             py: 2.5,
             width: { lg: `calc(100% - ${rightSidebar_width}px)` },
           }}
