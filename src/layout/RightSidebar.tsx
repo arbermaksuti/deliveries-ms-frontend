@@ -18,7 +18,11 @@ import {
 import { useEffect, useState } from 'react'
 import Added_Item from 'src/components/AddedItem'
 import { colors } from 'src/utils/colors'
-import { navbar_height, rightSidebar_width } from 'src/utils/consts'
+import {
+  navbar_height,
+  smallRightSidebar_width,
+  largeRightSidebar_width,
+} from 'src/utils/consts'
 import Dynamic_Dialog from 'src/components/DynamicDialog'
 import Order_Dialog from 'src/components/OrderDialog'
 
@@ -93,11 +97,13 @@ const RightSidebar: React.FC<Props> = (props) => {
         PaperProps={{
           sx: {
             top: navbar_height,
-            width: rightSidebar_width,
+            width: smallDevice
+              ? smallRightSidebar_width
+              : largeRightSidebar_width,
             overflowY: 'initial',
             borderLeft: `1px solid ${colors.border_color}`,
             boxShadow: 'none',
-            p: 1,
+            p: smallDevice ? 1 : 2,
           },
         }}
         BackdropProps={{ sx: { top: navbar_height } }}
@@ -132,6 +138,8 @@ const RightSidebar: React.FC<Props> = (props) => {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'space-between',
+              mt: 2,
+              mb: 1,
             }}
           >
             <Box>

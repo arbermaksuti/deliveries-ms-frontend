@@ -1,12 +1,14 @@
 import { Box, TextField } from '@mui/material'
 import { useState } from 'react'
+import MenuItems from 'src/components/MenuItems'
 import SelectItems from 'src/components/SelectItems'
-import { menusItems } from 'src/dummyData'
+import { main_menu_items } from 'src/utils/enums'
 
 const DashbordContainer = () => {
-  const [selectedMenu, setSelectedMenu] = useState<number | string>(0)
+  const [selectedMenu, setSelectedMenu] = useState<string>('all')
+
   return (
-    <div>
+    <>
       Dashbord_Container
       <Box
         sx={{
@@ -14,16 +16,14 @@ const DashbordContainer = () => {
           alignItems: 'center',
           flexWrap: 'wrap',
           my: 2,
-          width: 'fit-content',
-          mx: 'auto',
         }}
       >
-        {menusItems.map((item, index) => (
+        {main_menu_items.map((item, index) => (
           <SelectItems
             key={index}
             title={item.title}
-            selected={index === selectedMenu}
-            onClick={() => setSelectedMenu(index)}
+            selected={item.key === selectedMenu}
+            onClick={() => setSelectedMenu(item.key)}
           />
         ))}
         <TextField
@@ -31,12 +31,16 @@ const DashbordContainer = () => {
           variant="outlined"
           size="small"
           sx={{
-            ml: { sm: 2, lg: 6 },
+            ml: { md: 5 },
+            mt: { xs: 2, md: 0 },
             ' >.MuiOutlinedInput-root': { borderRadius: '8px' },
           }}
         />
       </Box>
-    </div>
+      <Box>
+        <MenuItems foods_type={selectedMenu} />
+      </Box>
+    </>
   )
 }
 

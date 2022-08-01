@@ -4,9 +4,10 @@ import { Badge, Box, IconButton, useMediaQuery } from '@mui/material'
 import Header from './Header'
 import Left_Sidebar from './LeftSidebar'
 import {
+  largeRightSidebar_width,
   leftSidebar_width,
   navbar_height,
-  rightSidebar_width,
+  smallRightSidebar_width,
 } from 'src/utils/consts'
 import {
   ChevronLeft,
@@ -94,7 +95,12 @@ const Layout: React.FC<Props> = (props) => {
         <Box
           sx={{
             position: 'absolute',
-            right: openedRightSidebar ? rightSidebar_width : 0,
+            right:
+              openedRightSidebar && smallDevice
+                ? smallRightSidebar_width
+                : openedRightSidebar && !smallDevice
+                ? largeRightSidebar_width
+                : 0,
             top: navbar_height,
             width: '50px',
             height: '50px',
@@ -119,8 +125,8 @@ const Layout: React.FC<Props> = (props) => {
             sx={{
               '&:hover': !smallDevice
                 ? {
-                  cursor: 'context-menu',
-                }
+                    cursor: 'context-menu',
+                  }
                 : {},
             }}
             onClick={handleRightSidebar}
@@ -141,7 +147,11 @@ const Layout: React.FC<Props> = (props) => {
           sx={{
             px: { xs: 2, sm: 6, lg: 8 },
             py: 2.5,
-            width: { lg: `calc(100% - ${rightSidebar_width}px)` },
+            width: {
+              lg: `calc(100% - ${
+                smallDevice ? smallRightSidebar_width : largeRightSidebar_width
+              }px)`,
+            },
           }}
         >
           {children}

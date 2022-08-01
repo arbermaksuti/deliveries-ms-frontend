@@ -10,15 +10,16 @@ import { reducer } from './store'
 
 const container = document.getElementById('root')
 const root = createRoot(container!)
+
 root.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
+      <CssBaseline />
       <Provider store={reducer}>
-        <CssBaseline />
         <App />
       </Provider>
     </ThemeProvider>
-  </React.StrictMode >
+  </React.StrictMode>
 )
 
 reportWebVitals()
