@@ -66,7 +66,6 @@ const Layout: React.FC<Props> = (props) => {
         smallDevice={smallDevice}
       />
       <Box>
-        {/* Button for opening/closing left sidebar */}
         <Box
           sx={{
             position: 'absolute',
@@ -92,7 +91,6 @@ const Layout: React.FC<Props> = (props) => {
             {openedLeftSidebar ? <ChevronLeft /> : <ChevronRight />}
           </IconButton>
         </Box>
-        {/* Button for opening/closing right sidebar */}
         <Box
           sx={{
             position: 'absolute',
@@ -121,8 +119,8 @@ const Layout: React.FC<Props> = (props) => {
             sx={{
               '&:hover': !smallDevice
                 ? {
-                    cursor: 'context-menu',
-                  }
+                  cursor: 'context-menu',
+                }
                 : {},
             }}
             onClick={handleRightSidebar}

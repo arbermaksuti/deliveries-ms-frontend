@@ -5,20 +5,20 @@ import App from './App'
 import reportWebVitals from './reportWebVitals'
 import './utils/global.css'
 import theme from './utils/theme'
-// import { Provider } from 'react-redux'
-// import store from './store'
+import { Provider } from 'react-redux'
+import { reducer } from './store'
 
 const container = document.getElementById('root')
 const root = createRoot(container!)
 root.render(
-  // <Provider store={store}>
   <React.StrictMode>
     <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <App />
+      <Provider store={reducer}>
+        <CssBaseline />
+        <App />
+      </Provider>
     </ThemeProvider>
-  </React.StrictMode>
-  // </Provider>
+  </React.StrictMode >
 )
 
 reportWebVitals()
