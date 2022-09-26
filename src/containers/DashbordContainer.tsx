@@ -1,6 +1,7 @@
 import { Box, TextField } from '@mui/material'
 import { useState } from 'react'
 import MenuItems from 'src/components/MenuItems'
+import Offers from 'src/components/Offers'
 import SelectItems from 'src/components/SelectItems'
 import { main_menu_items } from 'src/utils/enums'
 
@@ -9,7 +10,7 @@ const DashbordContainer = () => {
 
   return (
     <>
-      Dashbord_Container
+      <Offers />
       <Box
         sx={{
           display: 'flex',

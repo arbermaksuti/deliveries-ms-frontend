@@ -82,7 +82,6 @@ const LeftSidebar: React.FC<Props> = (props) => {
         >
           <ListItem
             button
-            onClick={() => console.log('Logout')}
             sx={{
               color: '#111',
             }}

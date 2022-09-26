@@ -1,5 +1,5 @@
 import { Typography } from '@mui/material'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 
 interface MenuItemsProps {
   foods_type: string

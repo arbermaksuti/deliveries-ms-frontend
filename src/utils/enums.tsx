@@ -1,4 +1,6 @@
 import { Dashboard, Person, RoomService } from '@mui/icons-material'
+import Offer1 from 'src/assets/offer_1.webp'
+import Offer2 from 'src/assets/offer_2.webp'
 
 export const leftSidebar_menu = [
   {
@@ -57,5 +59,22 @@ export const main_menu_items = [
   {
     title: 'Sweet & Salty',
     key: 'sweetsalty',
+  },
+]
+
+export const offers_items = [
+  {
+    img: Offer1,
+    name: 'Hamburger',
+    description: 'Ofert per 2 jave',
+    euroPrice: 3,
+    centPrice: 99,
+  },
+  {
+    img: Offer2,
+    name: 'Quesadilla',
+    description: 'Testing Offers',
+    euroPrice: 5,
+    centPrice: 0,
   },
 ]

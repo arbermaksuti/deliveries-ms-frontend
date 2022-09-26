@@ -25,13 +25,13 @@ const ConfirmationCodeForm: React.FC<Props> = (props) => {
     alert(`Hey you are write this confirmation code ${confirmationCode}`)
     setLoading(true)
     setError(true)
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       nextForm()
       setConfirmationCode('')
       setLoading(false)
       setError(false)
     }, 2000)
-    return () => clearTimeout()
+    return () => clearTimeout(timer)
   }
 
   return (
