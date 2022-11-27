@@ -1,7 +1,7 @@
 import { Grid, Typography } from '@mui/material'
 import React, { useState } from 'react'
 import { menu_items } from 'src/utils/enums'
-import MenuItem from './Item'
+import MenuItem from 'src/components/MenuItems/Item'
 import Dynamic_Dialog from 'src/components/DynamicDialog'
 import AddToShopDialog from 'src/components/MenuItems/AddToShopDialog'
 

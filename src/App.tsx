@@ -1,7 +1,7 @@
 import { Box } from '@mui/material'
-import AllRoutes from './routes'
-import { getAllUsers } from './store/reducers/userReducer'
-import { RootState } from './store/index'
+import AllRoutes from 'src/routes'
+import { getAllUsers } from 'src/store/reducers/userReducer'
+import { RootState } from 'src/store/index'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 

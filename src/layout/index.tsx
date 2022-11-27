@@ -1,8 +1,8 @@
 /* eslint-disable react/jsx-pascal-case */
 import { ReactNode, useState } from 'react'
 import { Badge, Box, IconButton, useMediaQuery } from '@mui/material'
-import Header from './Header'
-import Left_Sidebar from './LeftSidebar'
+import Header from 'src/layout/Header'
+import Left_Sidebar from 'src/layout/LeftSidebar'
 import {
   largeRightSidebar_width,
   leftSidebar_width,
@@ -15,7 +15,7 @@ import {
   ShoppingCartOutlined,
 } from '@mui/icons-material'
 import { colors } from 'src/utils/colors'
-import Right_Sidebar from './RightSidebar'
+import Right_Sidebar from 'src/layout/RightSidebar'
 
 interface Props {
   children: ReactNode

@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import DashboardPage from './DashboardPage'
-import NotFoundPage from './NotFoundPage'
-import LoginPage from './LoginPage'
+import DashboardPage from 'src/routes/DashboardPage'
+import NotFoundPage from 'src/routes/NotFoundPage'
+import LoginPage from 'src/routes/LoginPage'
 
 const index = () => {
   return (

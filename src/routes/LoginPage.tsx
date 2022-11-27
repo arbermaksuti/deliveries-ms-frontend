@@ -1,4 +1,4 @@
-import LoginContainer from '../containers/LoginContainer'
+import LoginContainer from 'src/containers/LoginContainer'
 
 const LoginPage = () => {
   return <LoginContainer />
