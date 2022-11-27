@@ -104,6 +104,7 @@ const RightSidebar: React.FC<Props> = (props) => {
             borderLeft: `1px solid ${colors.border_color}`,
             boxShadow: 'none',
             p: smallDevice ? 1 : 2,
+            pb: 0,
           },
         }}
         BackdropProps={{ sx: { top: navbar_height } }}

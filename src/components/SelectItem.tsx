@@ -1,11 +1,11 @@
 import { Chip } from '@mui/material'
 
-interface SelectItemsProps {
+interface SelectItemProps {
   title: string
   selected: boolean
   onClick: () => void
 }
-const SelectItems: React.FC<SelectItemsProps> = (props) => {
+const SelectItem: React.FC<SelectItemProps> = (props) => {
   const { title, selected, onClick } = props
   return (
     <Chip
@@ -25,4 +25,4 @@ const SelectItems: React.FC<SelectItemsProps> = (props) => {
   )
 }
 
-export default SelectItems
+export default SelectItem

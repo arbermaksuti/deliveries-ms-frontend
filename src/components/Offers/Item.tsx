@@ -1,4 +1,4 @@
-import { Box, Typography } from '@mui/material'
+import { Box, Button, Typography } from '@mui/material'
 import React from 'react'
 
 interface OfferItemInterface {
@@ -9,7 +9,7 @@ interface OfferItemInterface {
   centPrice: string | number
 }
 
-const Item: React.FC<OfferItemInterface> = (props) => {
+const OffersItem: React.FC<OfferItemInterface> = (props) => {
   const { img, name, description, euroPrice, centPrice } = props
   return (
     <Box
@@ -17,17 +17,18 @@ const Item: React.FC<OfferItemInterface> = (props) => {
         py: 1,
         px: 3,
         display: 'flex',
+        alignItems: 'center',
         flexWrap: 'wrap',
         justifyContent: 'space-between',
       }}
     >
       <Box
         sx={{
-          width: { md: '30%' },
+          width: { xs: '50%', md: '30%' },
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          maxHeight: '150px',
+          maxHeight: '100px',
         }}
       >
         <img
@@ -38,7 +39,7 @@ const Item: React.FC<OfferItemInterface> = (props) => {
       </Box>
       <Box
         sx={{
-          width: { md: '40%' },
+          width: { xs: '50%', md: '40%' },
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
@@ -64,6 +65,7 @@ const Item: React.FC<OfferItemInterface> = (props) => {
               fontSize: '20px',
               width: 'fit-content',
               backgroundColor: '#F9E4B1',
+              textAlign: 'center',
             }}
           >
             {description}
@@ -72,28 +74,42 @@ const Item: React.FC<OfferItemInterface> = (props) => {
       </Box>
       <Box
         sx={{
-          width: { md: '30%' },
           display: 'flex',
-          justifyContent: 'flex-end',
+          alignItems: { xs: 'center', md: 'flex-end' },
+          justifyContent: 'space-between',
+          flexDirection: { md: 'column' },
+          width: { xs: '100%', md: '30%' },
+          mt: { xs: 2, md: 'initial' },
         }}
       >
-        <Typography sx={{ fontSize: '50px', fontWeight: '700' }}>€</Typography>
-        <Typography
-          sx={{
-            fontSize: { xs: '60px', md: '120px' },
-            fontWeight: '700',
-            mt: { md: '-5px' },
-            ml: 1,
-          }}
-        >
-          {euroPrice}
-        </Typography>
-        <Typography sx={{ fontSize: '50px', fontWeight: '700' }}>
-          {centPrice.toString().padEnd(2, '0')}
-        </Typography>
+        <Box sx={{ display: 'flex' }}>
+          <Typography
+            sx={{ fontSize: { xs: '30px', md: '50px' }, fontWeight: '700' }}
+          >
+            €
+          </Typography>
+          <Typography
+            sx={{
+              fontSize: { xs: '40px', md: '80px' },
+              fontWeight: '700',
+              mt: { md: '-5px' },
+              ml: 1,
+            }}
+          >
+            {euroPrice}
+          </Typography>
+          <Typography
+            sx={{ fontSize: { xs: '30px', md: '50px' }, fontWeight: '700' }}
+          >
+            {centPrice.toString().padEnd(2, '0')}
+          </Typography>
+        </Box>
+        <Button variant="outlined" size="small">
+          Shto në shportë
+        </Button>
       </Box>
     </Box>
   )
 }
 
-export default Item
+export default OffersItem

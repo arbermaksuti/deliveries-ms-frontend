@@ -22,7 +22,13 @@ const DynamicDialog: React.FC<Props> = (props) => {
   } = props
 
   return (
-    <Dialog open={opened} onClose={onClose} maxWidth="sm" fullWidth>
+    <Dialog
+      open={opened}
+      onClose={onClose}
+      maxWidth="sm"
+      fullWidth
+      sx={{ zIndex: '1000000' }}
+    >
       <DialogContent>{content}</DialogContent>
       <DialogActions>
         <Button variant="contained" color="error" onClick={onClose}>

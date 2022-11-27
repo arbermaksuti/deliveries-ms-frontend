@@ -3,7 +3,7 @@ import Carousel from 'react-material-ui-carousel'
 import OfferItem from 'src/components/Offers/Item'
 import { offers_items } from 'src/utils/enums'
 
-const index = () => {
+const Offers = () => {
   return (
     <Box
       sx={{
@@ -22,4 +22,4 @@ const index = () => {
   )
 }
 
-export default index
+export default Offers
