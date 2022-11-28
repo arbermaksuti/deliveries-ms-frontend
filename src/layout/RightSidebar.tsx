@@ -224,7 +224,7 @@ const RightSidebar: React.FC<Props> = (props) => {
               />
             </RadioGroup>
           </Box>
-          <Box textAlign="right" sx={{ mt: 4 }}>
+          <Box textAlign="right" sx={{ mt: 4, mb: 1 }}>
             <Button
               variant="contained"
               size="small"

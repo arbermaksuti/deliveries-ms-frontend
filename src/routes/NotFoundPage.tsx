@@ -4,6 +4,7 @@ import Layout from 'src/layout'
 
 const NotFoundPage = () => {
   const navigate = useNavigate()
+
   return (
     <Layout>
       <Box

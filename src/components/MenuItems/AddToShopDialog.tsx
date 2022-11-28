@@ -6,11 +6,6 @@ import { useEffect, useState } from 'react'
 const AddToShopDialog = () => {
   const [count, setCount] = useState<number[]>([1])
 
-  useEffect(() => {
-    console.log('count', count)
-    console.log('count.length', count.length)
-  }, [count])
-
   return (
     <Box>
       <Typography sx={{ fontSize: '20px' }}>
@@ -22,6 +17,7 @@ const AddToShopDialog = () => {
           mt: 2,
           display: 'flex',
           justifyContent: 'space-between',
+          flexDirection: { xs: 'column-reverse', md: 'row' },
         }}
       >
         <Box
@@ -44,20 +40,23 @@ const AddToShopDialog = () => {
         <Box
           sx={{
             display: 'flex',
-            flexDirection: 'column',
+            flexDirection: { md: 'column' },
             textAlign: 'center',
           }}
         >
-          <Typography sx={{ fontSize: '18px' }}>
+          <Typography sx={{ fontSize: '18px', mr: { xs: 1, md: 'initial' } }}>
             Sasia {count[count.length - 1]}
           </Typography>
           <ButtonGroup>
             <Button
+              disabled={count.length <= 1 ? true : false}
               size="small"
               onClick={() => {
-                const copyCount = [...count]
-                copyCount.splice(-1)
-                setCount(copyCount)
+                if (count.length > 1) {
+                  const copyCount = [...count]
+                  copyCount.splice(-1)
+                  setCount(copyCount)
+                }
               }}
             >
               <RemoveIcon fontSize="small" />
