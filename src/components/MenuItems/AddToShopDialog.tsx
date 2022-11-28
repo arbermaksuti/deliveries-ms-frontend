@@ -1,16 +1,15 @@
 import AddIcon from '@mui/icons-material/Add'
 import RemoveIcon from '@mui/icons-material/Remove'
 import { Box, Button, ButtonGroup, TextField, Typography } from '@mui/material'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 const AddToShopDialog = () => {
-  const [count, setCount] = useState<number[]>([1])
+  const [count, setCount] = useState<number>(1)
 
   return (
     <Box>
       <Typography sx={{ fontSize: '20px' }}>
-        Jepni më shume detaje për{' '}
-        {count.length > 1 ? 'këto produkte' : `këtë produkt`}
+        Jepni më shume detaje për {count > 1 ? 'këto produkte' : `këtë produkt`}
       </Typography>
       <Box
         sx={{
@@ -27,15 +26,18 @@ const AddToShopDialog = () => {
             width: '80%',
           }}
         >
-          {count.map((item, i) => (
-            <TextField
-              placeholder={`Shënime për produktin e ${item}`}
-              type="text"
-              size="small"
-              key={i}
-              sx={{ mt: 1 }}
-            />
-          ))}
+          <TextField
+            placeholder={`Shënime për ${
+              count > 1 ? 'këto produkte' : `këtë produkt`
+            }`}
+            type="text"
+            variant="outlined"
+            size="small"
+            multiline
+            rows={5}
+            maxRows={10}
+            sx={{ mt: 1 }}
+          />
         </Box>
         <Box
           sx={{
@@ -45,17 +47,15 @@ const AddToShopDialog = () => {
           }}
         >
           <Typography sx={{ fontSize: '18px', mr: { xs: 1, md: 'initial' } }}>
-            Sasia {count[count.length - 1]}
+            Sasia {count}
           </Typography>
           <ButtonGroup>
             <Button
-              disabled={count.length <= 1 ? true : false}
+              disabled={count <= 1 ? true : false}
               size="small"
               onClick={() => {
-                if (count.length > 1) {
-                  const copyCount = [...count]
-                  copyCount.splice(-1)
-                  setCount(copyCount)
+                if (count > 1) {
+                  setCount((prev) => prev - 1)
                 }
               }}
             >
@@ -64,7 +64,7 @@ const AddToShopDialog = () => {
             <Button
               size="small"
               onClick={() => {
-                setCount((prev) => [...prev, prev[prev.length - 1] + 1])
+                setCount((prev) => prev + 1)
               }}
             >
               <AddIcon fontSize="small" />

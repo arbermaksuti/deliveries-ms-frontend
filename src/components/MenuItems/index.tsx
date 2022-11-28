@@ -28,6 +28,10 @@ const MenuItems: React.FC<MenuItemsProps> = (props) => {
       <Dynamic_Dialog
         opened={addToShopDialog ? true : false}
         onClose={() => setAddToShopDialog(false)}
+        onSubmit={() => {
+          setAddToShopDialog(false)
+          alert('Produkti u shtua në shportë')
+        }}
         content={<AddToShopDialog />}
         firstActionsButton="Mbyll"
         secondActionsButton="Shto"

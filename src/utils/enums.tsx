@@ -242,6 +242,7 @@ export const dummy_table_columns = [
   {
     field: 'delivery_id',
     flex: 1,
+    minWidth: 80,
     maxWidth: 80,
     headerName: 'Porosia',
     sortable: false,
