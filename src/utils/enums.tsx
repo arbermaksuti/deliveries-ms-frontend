@@ -317,3 +317,36 @@ export const dummy_table_columns = [
     ),
   },
 ]
+
+export const frequent_orders = [
+  {
+    name: 'Burger',
+    img: Offer1,
+    total: 12,
+  },
+  {
+    name: 'Burrito',
+    img: Offer2,
+    total: 5,
+  },
+  {
+    name: 'Chicken',
+    img: Offer1,
+    total: 1,
+  },
+]
+
+export const frequent_customers = [
+  {
+    phone: '044412213',
+    total: 12,
+  },
+  {
+    phone: '044412213',
+    total: 10,
+  },
+  {
+    phone: '044412213',
+    total: 10,
+  },
+]

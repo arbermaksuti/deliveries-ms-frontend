@@ -89,7 +89,7 @@ const Header: React.FC<HeaderProps> = (props) => {
             borderRight: 'none',
             borderRadius: 0,
             backgroundColor: '#fff',
-            zIndex: '1400',
+            zIndex: '2400',
             transition: `right 0.28s`,
             display: 'flex',
             alignItems: 'center',

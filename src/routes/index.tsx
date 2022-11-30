@@ -1,8 +1,9 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import DashboardPage from 'src/routes/DashboardPage'
-import NotFoundPage from 'src/routes/NotFoundPage'
-import LoginPage from 'src/routes/LoginPage'
-import OrdersPage from 'src/routes/OrdersPage'
+import DashboardPage from './DashboardPage'
+import NotFoundPage from './NotFoundPage'
+import LoginPage from './LoginPage'
+import OrdersPage from './OrdersPage'
+import CustomersPage from './CustomersPage'
 
 const index = () => {
   return (
@@ -12,6 +13,7 @@ const index = () => {
         <Route path="/" element={<LoginPage />} />
         <Route path="/dashboard" element={<DashboardPage />} />
         <Route path="/orders" element={<OrdersPage />} />
+        <Route path="/customers" element={<CustomersPage />} />
       </Routes>
     </BrowserRouter>
   )

@@ -7,6 +7,8 @@ import 'src/utils/global.css'
 import theme from 'src/utils/theme'
 import { Provider } from 'react-redux'
 import { reducer } from 'src/store'
+import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment'
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
 
 const container = document.getElementById('root')
 const root = createRoot(container!)
@@ -16,7 +18,9 @@ root.render(
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Provider store={reducer}>
-        <App />
+        <LocalizationProvider dateAdapter={AdapterMoment} adapterLocale="sq">
+          <App />
+        </LocalizationProvider>
       </Provider>
     </ThemeProvider>
   </React.StrictMode>

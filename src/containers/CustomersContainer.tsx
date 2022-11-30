@@ -5,12 +5,13 @@ import 'moment/min/locales'
 import {
   dummy_table_columns,
   dummy_table_rows,
+  frequent_customers,
   frequent_orders,
 } from 'src/utils/enums'
 import { useState } from 'react'
 import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker'
 
-const OrdersContainer = () => {
+const CustomersContainer = () => {
   const [dateFrom, setDateFrom] = useState<moment.Moment | null>(
     moment().startOf('isoWeek')
   )
@@ -19,24 +20,29 @@ const OrdersContainer = () => {
   return (
     <>
       <Box sx={{ mb: 5 }}>
-        <Box sx={{ mb: 4 }}>
+        <Box sx={{ mb: 4, mt: { xs: 4, sm: 'initial' } }}>
           <Box
             sx={{
               display: 'flex',
               alignItems: 'center',
-              flexDirection: { xs: 'column', sm: 'initial' },
+              flexDirection: { xs: 'column', md: 'row' },
               mb: 2,
             }}
           >
-            <Typography sx={{ fontSize: '20px' }}>
-              Porositë më të shpeshta
+            <Typography
+              sx={{
+                fontSize: '20px',
+                textAlign: { xs: 'center', sm: 'initial' },
+              }}
+            >
+              Konsumatorët më të shpeshtë të javës
             </Typography>
             <Box
               sx={{
                 display: 'flex',
                 alignItems: 'center',
                 ml: { sm: 2 },
-                my: { xs: 1, sm: 'initial' },
+                mt: { xs: 1, md: 'initial' },
               }}
             >
               <DesktopDatePicker
@@ -66,8 +72,11 @@ const OrdersContainer = () => {
                 )}
               />
             </Box>
-
-            <Typography sx={{ ml: { sm: 'auto' } }}>Shiko më shumë</Typography>
+            <Typography
+              sx={{ ml: { sm: 'auto' }, mt: { xs: 1, md: 'initial' } }}
+            >
+              Shiko më shumë
+            </Typography>
           </Box>
           <Box
             sx={{
@@ -77,78 +86,32 @@ const OrdersContainer = () => {
               justifyContent: 'space-between',
             }}
           >
-            {frequent_orders.map((oneFreqOrder, i) => (
+            {frequent_customers.map((oneFreqCustomer, i) => (
               <Card
                 key={i}
                 sx={{
                   display: 'flex',
                   alignItems: 'center',
                   width: { xs: '100%', sm: '48%', md: '30%' },
-                  p: 1,
                   my: { xs: 0.5, md: 'initial' },
+                  py: 1,
+                  px: 2,
                 }}
               >
-                <img
-                  src={oneFreqOrder.img}
-                  alt="Product"
-                  style={{
-                    width: '40px',
-                    aspectRatio: '3/2',
-                    objectFit: 'contain',
-                    margin: '0 5px',
-                  }}
-                />
-                <Typography variant="h6">{oneFreqOrder.name}</Typography>
-                <Typography sx={{ ml: 'auto', mr: 1 }}>
-                  Gjithsej:{' '}
+                <Typography variant="h6">{oneFreqCustomer.phone}</Typography>
+                <Typography sx={{ ml: 'auto' }}>
+                  Gjithsej:
                   <span style={{ fontWeight: 'bold' }}>
-                    {oneFreqOrder.total}
+                    {oneFreqCustomer.total}
                   </span>
                 </Typography>
               </Card>
             ))}
           </Box>
         </Box>
-        <Box
-          sx={{
-            display: 'flex',
-            alignItems: 'center',
-            flexDirection: { xs: 'column', md: 'row' },
-            mb: 2,
-          }}
-        >
-          <Typography variant="h5">Porositë e sotshme</Typography>
-          <Typography
-            variant="h5"
-            sx={{ mx: 1, display: { xs: 'none', md: 'initial' } }}
-          >
-            -
-          </Typography>
-          <Typography variant="h5">
-            {moment().locale('sq').format('LL')}
-          </Typography>
-        </Box>
-        <CustomTable rows={dummy_table_rows} columns={dummy_table_columns} />
-      </Box>
-      <Box>
-        <Box
-          sx={{
-            display: 'flex',
-            alignItems: 'center',
-            mb: 2,
-            justifyContent: { xs: 'center', md: 'initial' },
-          }}
-        >
-          <Typography variant="h5">Porositë e mëparshme</Typography>
-        </Box>
-        <CustomTable
-          datePickers
-          rows={dummy_table_rows}
-          columns={dummy_table_columns}
-        />
       </Box>
     </>
   )
 }
 
-export default OrdersContainer
+export default CustomersContainer

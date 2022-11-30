@@ -33,7 +33,7 @@ const AddedItem: React.FC<Props> = (props) => {
       {loading === id ? (
         <Box
           sx={{
-            maxHeight: `calc(60px - 24px - 2px)`,
+            max: `calc(60px - 24px - 2px)`,
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
