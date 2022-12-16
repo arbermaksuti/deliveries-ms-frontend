@@ -75,7 +75,7 @@ const Layout: React.FC<Props> = (props) => {
 
       <Box
         sx={{
-          backgroundColor: '#FDFAF3',
+          backgroundColor: colors.bg,
           px: { xs: 2, sm: 6, lg: 8 },
           py: 2.5,
           width: {

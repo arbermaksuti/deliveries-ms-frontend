@@ -48,7 +48,12 @@ const MenuItem: React.FC<MenuItemProps> = (props) => {
           <Typography sx={{ fontSize: '20px', fontWeight: '500' }}>
             {price}€
           </Typography>
-          <Button variant="outlined" size="small" onClick={openAddToShopDialog}>
+          <Button
+            variant="outlined"
+            color="secondary"
+            size="small"
+            onClick={openAddToShopDialog}
+          >
             Shto
           </Button>
         </CardActions>

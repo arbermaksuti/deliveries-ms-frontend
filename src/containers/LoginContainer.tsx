@@ -37,7 +37,7 @@ const LoginContainer = () => {
           lg: '100vh',
         },
         p: 2,
-        backgroundColor: colors.white,
+        backgroundColor: colors.bg,
       }}
     >
       <Grid
@@ -66,7 +66,7 @@ const LoginContainer = () => {
                   },
                 }}
               >
-                <img src="/logo192.png" alt="logo" width="100%" height="100%" />
+                <img src="/logo.png" alt="logo" width="100%" height="100%" />
               </Box>
               <Typography
                 variant="h2"

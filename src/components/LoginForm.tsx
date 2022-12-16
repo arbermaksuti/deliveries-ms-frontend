@@ -1,13 +1,7 @@
 import { LoadingButton } from '@mui/lab'
-import {
-  Alert,
-  Box,
-  Button,
-  FormLabel,
-  TextField,
-  Typography,
-} from '@mui/material'
+import { Box, Button, FormLabel, TextField, Typography } from '@mui/material'
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 interface Props {
   nextForm?: any
@@ -15,6 +9,7 @@ interface Props {
 
 const LoginForm: React.FC<Props> = (props) => {
   const { nextForm } = props
+  const navigate = useNavigate()
   const [username, setUsername] = useState<string>('')
   const [password, setPassword] = useState<string>('')
   const [loading, setLoading] = useState<boolean>(false)
@@ -22,21 +17,17 @@ const LoginForm: React.FC<Props> = (props) => {
 
   const login_handler = (e: any) => {
     e.preventDefault()
-    alert(
-      `Hey ${username ? username : 'Test'} you are logged in with ${
-        password ? password : 'Test'
-      } password`
-    )
     setLoading(true)
-    setError(true)
+    // setError(true)
     setTimeout(() => {
       nextForm()
       setUsername('')
       setPassword('')
       setLoading(false)
       setError(false)
+      navigate('dashboard')
     }, 2000)
-    return () => clearTimeout()
+    return () => clearTimeout(2000)
   }
 
   return (
@@ -74,7 +65,7 @@ const LoginForm: React.FC<Props> = (props) => {
         onSubmit={(e: any) => login_handler(e)}
       >
         <Box>
-          <FormLabel sx={{ color: '#323232', ml: 1, fontWeight: '500' }}>
+          <FormLabel sx={{ ml: 1, fontWeight: '500' }}>
             Emri i përdoruesit
           </FormLabel>
           <TextField
@@ -88,9 +79,7 @@ const LoginForm: React.FC<Props> = (props) => {
           />
         </Box>
         <Box mt={2}>
-          <FormLabel sx={{ color: '#323232', ml: 1, fontWeight: '500' }}>
-            Fjalëkalimi
-          </FormLabel>
+          <FormLabel sx={{ ml: 1, fontWeight: '500' }}>Fjalëkalimi</FormLabel>
           <TextField
             id="password"
             name="password"
@@ -103,6 +92,7 @@ const LoginForm: React.FC<Props> = (props) => {
           <Box display="flex" justifyContent="end">
             <Button
               variant="text"
+              color="secondary"
               sx={{
                 fontSize: '16px',
                 textTransform: 'none',
@@ -130,11 +120,11 @@ const LoginForm: React.FC<Props> = (props) => {
           >
             Kyçu
           </LoadingButton>
-          {error && (
-            <Alert severity="error" sx={{ mt: 1 }}>
+          {/* {error && (
+            <Alert severity="error" sx={{ my: 1 }}>
               Vetëm për testim!
             </Alert>
-          )}
+          )} */}
         </Box>
       </Box>
     </Box>

@@ -1,4 +1,13 @@
-import { Box, Card, Typography, TextField } from '@mui/material'
+import {
+  Box,
+  Card,
+  Typography,
+  TextField,
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Select,
+} from '@mui/material'
 import CustomTable from 'src/components/CustomTable'
 import moment from 'moment'
 import 'moment/min/locales'
@@ -10,12 +19,14 @@ import {
 } from 'src/utils/enums'
 import { useState } from 'react'
 import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker'
+import { colors } from 'src/utils/colors'
 
 const CustomersContainer = () => {
   const [dateFrom, setDateFrom] = useState<moment.Moment | null>(
     moment().startOf('isoWeek')
   )
   const [dateTo, setDateTo] = useState<moment.Moment | null>(moment())
+  const [location, setLocation] = useState<string>('all')
 
   return (
     <>
@@ -55,8 +66,11 @@ const CustomersContainer = () => {
                 renderInput={(params) => (
                   <TextField
                     {...params}
-                    sx={{ width: '150px', mr: 2 }}
                     size="small"
+                    sx={{
+                      width: '150px',
+                      backgroundColor: colors.default_white,
+                    }}
                   />
                 )}
               />
@@ -68,9 +82,33 @@ const CustomersContainer = () => {
                   setDateTo(newValue)
                 }}
                 renderInput={(params) => (
-                  <TextField {...params} sx={{ width: '150px' }} size="small" />
+                  <TextField
+                    {...params}
+                    size="small"
+                    sx={{
+                      mx: 2,
+                      width: '150px',
+                      backgroundColor: colors.default_white,
+                    }}
+                  />
                 )}
               />
+              <FormControl>
+                <InputLabel id="location-select-label">Pika</InputLabel>
+                <Select
+                  labelId="location-select-label"
+                  id="location-select"
+                  value={location}
+                  label="Pika"
+                  size="small"
+                  sx={{ backgroundColor: colors.default_white }}
+                  onChange={(e) => setLocation(e.target.value)}
+                >
+                  <MenuItem value="all">Të gjitha</MenuItem>
+                  <MenuItem value="qendra">Qendra</MenuItem>
+                  <MenuItem value="rrugaC">Rruga C</MenuItem>
+                </Select>
+              </FormControl>
             </Box>
             <Typography
               sx={{ ml: { sm: 'auto' }, mt: { xs: 1, md: 'initial' } }}

@@ -2,7 +2,7 @@ import {
   Box,
   Drawer,
   List,
-  ListItem,
+  ListItemButton,
   ListItemIcon,
   ListItemText,
 } from '@mui/material'
@@ -55,8 +55,7 @@ const LeftSidebar: React.FC<Props> = (props) => {
                 style={{ color: '#111111' }}
                 onClick={closedSidebar}
               >
-                <ListItem
-                  button
+                <ListItemButton
                   sx={{
                     ...(location.pathname.startsWith(item.path) && {
                       backgroundColor: 'rgba(0, 0, 0, 0.05)',
@@ -66,7 +65,7 @@ const LeftSidebar: React.FC<Props> = (props) => {
                 >
                   <ListItemIcon>{item.icon}</ListItemIcon>
                   <ListItemText primary={item.title} />
-                </ListItem>
+                </ListItemButton>
               </Link>
             )
           })}
@@ -80,8 +79,7 @@ const LeftSidebar: React.FC<Props> = (props) => {
             },
           }}
         >
-          <ListItem
-            button
+          <ListItemButton
             sx={{
               color: '#111',
             }}
@@ -90,7 +88,7 @@ const LeftSidebar: React.FC<Props> = (props) => {
               <Logout />
             </ListItemIcon>
             <ListItemText primary="Shkyçu" />
-          </ListItem>
+          </ListItemButton>
         </List>
       </Box>
     </Drawer>

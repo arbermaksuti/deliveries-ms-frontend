@@ -76,7 +76,7 @@ const NewPasswordForm: React.FC<Props> = (props) => {
         onSubmit={(e: any) => new_password_handler(e)}
       >
         <Box>
-          <FormLabel sx={{ color: '#323232', ml: 1, fontWeight: '500' }}>
+          <FormLabel sx={{ ml: 1, fontWeight: '500' }}>
             Fjalëkalimi i ri
           </FormLabel>
           <TextField
@@ -90,7 +90,7 @@ const NewPasswordForm: React.FC<Props> = (props) => {
           />
         </Box>
         <Box sx={{ mt: 2 }}>
-          <FormLabel sx={{ color: '#323232', ml: 1, fontWeight: '500' }}>
+          <FormLabel sx={{ ml: 1, fontWeight: '500' }}>
             Rishkruani fjalëkalimin e ri
           </FormLabel>
           <TextField
@@ -135,6 +135,7 @@ const NewPasswordForm: React.FC<Props> = (props) => {
                 textTransform: 'none',
               }}
               variant="text"
+              color="secondary"
               onClick={() => previousForm(1)}
             >
               Po e kujtoj fjalëkalimin?

@@ -15,6 +15,7 @@ import MenuItem2 from 'src/assets/menuItem_2.jpg'
 import MenuItem3 from 'src/assets/menuItem_3.jpg'
 import Offer1 from 'src/assets/offer_1.webp'
 import Offer2 from 'src/assets/offer_2.webp'
+import { colors } from './colors'
 
 export const leftSidebar_menu = [
   {
@@ -201,7 +202,7 @@ const checkStatusOfOrder = (status: number) => {
   switch (status) {
     case 1:
       return (
-        <Box sx={{ backgroundColor: '#C3B59F' }}>
+        <Box sx={{ backgroundColor: colors.order }}>
           <Call fontSize="small" />
           <Typography>Porosi</Typography>
         </Box>
@@ -209,28 +210,28 @@ const checkStatusOfOrder = (status: number) => {
       break
     case 2:
       return (
-        <Box sx={{ backgroundColor: '#F19A3E' }}>
+        <Box sx={{ backgroundColor: colors.kitchen }}>
           <Microwave fontSize="small" /> <Typography>Kuzhinë</Typography>
         </Box>
       )
       break
     case 3:
       return (
-        <Box sx={{ backgroundColor: '#93BEDF' }}>
+        <Box sx={{ backgroundColor: colors.delivery }}>
           <DirectionsCar fontSize="small" /> <Typography>Dërgim</Typography>
         </Box>
       )
       break
     case 4:
       return (
-        <Box sx={{ backgroundColor: '#5EFC8D' }}>
+        <Box sx={{ backgroundColor: colors.received }}>
           <Home fontSize="small" /> <Typography>Pranuar</Typography>
         </Box>
       )
       break
     default:
       return (
-        <Box sx={{ backgroundColor: '#C3B59F' }}>
+        <Box sx={{ backgroundColor: colors.order }}>
           <Call fontSize="small" />
           <Typography>Porosi</Typography>
         </Box>
@@ -310,7 +311,12 @@ export const dummy_table_columns = [
     maxWidth: 110,
     renderCell: () => (
       <div style={{ flex: 1, display: 'flex', padding: 3 }}>
-        <Button size="small" variant="contained" sx={{ textTransform: 'none' }}>
+        <Button
+          size="small"
+          variant="contained"
+          color="secondary"
+          sx={{ textTransform: 'none' }}
+        >
           Më shumë
         </Button>
       </div>

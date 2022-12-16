@@ -58,7 +58,7 @@ const Header: React.FC<HeaderProps> = (props) => {
             borderTop: 'none',
             borderLeft: 'none',
             borderRadius: 0,
-            backgroundColor: '#fff',
+            backgroundColor: colors.default_white,
             zIndex: '2400',
             transition: `left 0.28s`,
             borderBottomRightRadius: '20px',
@@ -88,7 +88,7 @@ const Header: React.FC<HeaderProps> = (props) => {
             borderTop: 'none',
             borderRight: 'none',
             borderRadius: 0,
-            backgroundColor: '#fff',
+            backgroundColor: colors.default_white,
             zIndex: '2400',
             transition: `right 0.28s`,
             display: 'flex',
@@ -113,7 +113,7 @@ const Header: React.FC<HeaderProps> = (props) => {
           >
             <Badge
               badgeContent={1}
-              color="primary"
+              color="secondary"
               anchorOrigin={{
                 vertical: 'top',
                 horizontal: 'left',

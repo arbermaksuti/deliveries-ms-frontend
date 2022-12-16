@@ -29,7 +29,7 @@ import Order_Dialog from 'src/components/OrderDialog'
 const added_items = [
   {
     id: 1,
-    img: '/logo192.png',
+    img: '/logo.png',
     quantity: 2,
     name: 'Quesadillas',
     price: 2.54,
@@ -37,7 +37,7 @@ const added_items = [
   },
   {
     id: 2,
-    img: '/logo192.png',
+    img: '/logo.png',
     quantity: 2,
     name: 'Quesadillas',
     price: 2.54,
@@ -45,7 +45,7 @@ const added_items = [
   },
   {
     id: 3,
-    img: '/logo192.png',
+    img: '/logo.png',
     quantity: 2,
     name: 'Quesadillas',
     price: 2.54,

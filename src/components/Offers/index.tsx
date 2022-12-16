@@ -2,12 +2,13 @@ import { Box } from '@mui/material'
 import Carousel from 'react-material-ui-carousel'
 import OfferItem from 'src/components/Offers/Item'
 import { offers_items } from 'src/utils/enums'
+import theme from 'src/utils/theme'
 
 const Offers = () => {
   return (
     <Box
       sx={{
-        backgroundColor: '#F8D68C',
+        backgroundColor: theme.palette.primary.main,
         borderRadius: 1,
         overflow: 'hidden',
         py: 1.5,

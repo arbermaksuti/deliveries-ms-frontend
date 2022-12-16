@@ -46,6 +46,7 @@ const ForgotPasswordForm: React.FC<Props> = (props) => {
         textAlign={'center'}
         variant="h5"
         component="div"
+        color="secondary"
       >
         Kam harruar fjalëkalimin
       </Typography>
@@ -70,9 +71,7 @@ const ForgotPasswordForm: React.FC<Props> = (props) => {
         onSubmit={(e: any) => forgot_password_handler(e)}
       >
         <Box>
-          <FormLabel sx={{ color: '#323232', ml: 1, fontWeight: '500' }}>
-            Email
-          </FormLabel>
+          <FormLabel sx={{ ml: 1, fontWeight: '500' }}>Email</FormLabel>
           <TextField
             id="email"
             name="email"
@@ -116,6 +115,7 @@ const ForgotPasswordForm: React.FC<Props> = (props) => {
             textTransform: 'none',
           }}
           variant="text"
+          color="secondary"
           onClick={() => previousForm()}
         >
           Po e kujtoj fjalëkalimin?

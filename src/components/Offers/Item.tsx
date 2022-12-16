@@ -1,5 +1,6 @@
 import { Box, Button, Typography } from '@mui/material'
 import React from 'react'
+import theme from 'src/utils/theme'
 
 interface OfferItemInterface {
   img: string
@@ -64,7 +65,7 @@ const OffersItem: React.FC<OfferItemInterface> = (props) => {
               borderRadius: 1,
               fontSize: '20px',
               width: 'fit-content',
-              backgroundColor: '#F9E4B1',
+              backgroundColor: theme.palette.primary.light,
               textAlign: 'center',
             }}
           >
@@ -104,7 +105,7 @@ const OffersItem: React.FC<OfferItemInterface> = (props) => {
             {centPrice.toString().padEnd(2, '0')}
           </Typography>
         </Box>
-        <Button variant="outlined" size="small">
+        <Button variant="outlined" size="small" color="secondary">
           Shto në shportë
         </Button>
       </Box>

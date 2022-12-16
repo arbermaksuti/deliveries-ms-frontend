@@ -1,9 +1,19 @@
 import { GetApp } from '@mui/icons-material'
-import { Box, Button, IconButton, TextField } from '@mui/material'
+import {
+  Box,
+  Button,
+  FormControl,
+  IconButton,
+  InputLabel,
+  MenuItem,
+  Select,
+  TextField,
+} from '@mui/material'
 import { DataGrid } from '@mui/x-data-grid'
 import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker'
 import moment from 'moment'
 import { useState } from 'react'
+import { colors } from 'src/utils/colors'
 
 interface CustomTableProps {
   datePickers?: boolean
@@ -18,11 +28,12 @@ const CustomTable: React.FC<CustomTableProps> = (props) => {
   const [dateTo, setDateTo] = useState<moment.Moment | null>(
     moment().subtract(1, 'd')
   )
+  const [location, setLocation] = useState<string>('all')
 
   return (
     <Box
       sx={{
-        backgroundColor: '#FFF',
+        backgroundColor: colors.default_white,
         borderRadius: 1,
         p: 2,
         display: 'flex',
@@ -30,7 +41,14 @@ const CustomTable: React.FC<CustomTableProps> = (props) => {
       }}
     >
       {datePickers && (
-        <Box sx={{ display: 'flex', alignItems: 'center' }}>
+        <Box
+          sx={{
+            display: 'flex',
+            justifyContent: { xs: 'space-between', md: 'initial' },
+            flexWrap: 'wrap',
+            gap: { xs: 2 },
+          }}
+        >
           <DesktopDatePicker
             label="Prej"
             inputFormat="DD/MM/YYYY"
@@ -39,11 +57,7 @@ const CustomTable: React.FC<CustomTableProps> = (props) => {
               setDateFrom(newValue)
             }}
             renderInput={(params) => (
-              <TextField
-                {...params}
-                sx={{ width: '150px', mr: 2, my: 1 }}
-                size="small"
-              />
+              <TextField {...params} sx={{ width: '150px' }} size="small" />
             )}
           />
           <DesktopDatePicker
@@ -56,17 +70,33 @@ const CustomTable: React.FC<CustomTableProps> = (props) => {
             renderInput={(params) => (
               <TextField
                 {...params}
-                sx={{ width: '150px', my: 1 }}
                 size="small"
+                sx={{ width: '150px', mx: { md: 2 } }}
               />
             )}
           />
+          <FormControl>
+            <InputLabel id="location-select-label">Pika</InputLabel>
+            <Select
+              labelId="location-select-label"
+              id="location-select"
+              value={location}
+              label="Pika"
+              size="small"
+              sx={{ backgroundColor: colors.default_white }}
+              onChange={(e) => setLocation(e.target.value)}
+            >
+              <MenuItem value="all">Të gjitha</MenuItem>
+              <MenuItem value="qendra">Qendra</MenuItem>
+              <MenuItem value="rrugaC">Rruga C</MenuItem>
+            </Select>
+          </FormControl>
           <Button
             sx={{ ml: 'auto', width: 'fit-content' }}
             startIcon={<GetApp />}
             variant="contained"
             size="small"
-            color="secondary"
+            // color="secondary"
           >
             Shkarko
           </Button>
@@ -78,7 +108,7 @@ const CustomTable: React.FC<CustomTableProps> = (props) => {
           startIcon={<GetApp />}
           variant="contained"
           size="small"
-          color="secondary"
+          // color="secondary"
         >
           Shkarko
         </Button>
@@ -89,13 +119,10 @@ const CustomTable: React.FC<CustomTableProps> = (props) => {
           height: 300,
           width: '100%',
           flexGrow: 1,
-          backgroundColor: '#FFF',
+          backgroundColor: colors.default_white,
           '& .MuiDataGrid-row': {
-            ':nth-of-type(even)': {
-              backgroundColor: '#FBFBFB',
-              ':hover': {
-                backgroundColor: '#e6e6e6',
-              },
+            ':hover': {
+              backgroundColor: colors.darker_white,
             },
           },
         }}
