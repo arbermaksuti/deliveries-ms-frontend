@@ -298,29 +298,45 @@ export const dummy_table_columns = [
   {
     field: 'ordered_time',
     flex: 1,
+    headerName: 'Koha',
     minWidth: 80,
     maxWidth: 80,
-    headerName: 'Koha',
     sortable: false,
   },
   {
     field: 'action',
-    headerName: 'Actions',
     flex: 1,
-    minWidth: 110,
-    maxWidth: 110,
-    renderCell: () => (
-      <div style={{ flex: 1, display: 'flex', padding: 3 }}>
-        <Button
-          size="small"
-          variant="contained"
-          color="secondary"
-          sx={{ textTransform: 'none' }}
+    headerName: 'Veprime',
+    minWidth: 190,
+    maxWidth: 190,
+    renderCell: (params: any) => {
+      return (
+        <div
+          style={{
+            flex: 1,
+            display: 'flex',
+            justifyContent: 'space-between',
+          }}
         >
-          Më shumë
-        </Button>
-      </div>
-    ),
+          <Button
+            size="small"
+            href={`tel:${params.row.phone_no}`}
+            variant="contained"
+            sx={{ textTransform: 'none' }}
+          >
+            Telefono
+          </Button>
+          <Button
+            size="small"
+            variant="contained"
+            color="secondary"
+            sx={{ textTransform: 'none' }}
+          >
+            Më shumë
+          </Button>
+        </div>
+      )
+    },
   },
 ]
 

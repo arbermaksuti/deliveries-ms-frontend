@@ -92,7 +92,6 @@ const LoginForm: React.FC<Props> = (props) => {
           <Box display="flex" justifyContent="end">
             <Button
               variant="text"
-              color="secondary"
               sx={{
                 fontSize: '16px',
                 textTransform: 'none',

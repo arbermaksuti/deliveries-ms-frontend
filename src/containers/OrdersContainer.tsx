@@ -40,14 +40,15 @@ const OrdersContainer = () => {
             }}
           >
             <Typography sx={{ fontSize: '20px' }}>
-              Porositë më të shpeshta
+              Porositë më të shpeshta të kësaj jave
             </Typography>
             <Box
               sx={{
                 display: 'flex',
                 alignItems: 'center',
-                ml: { sm: 2 },
-                my: { xs: 1, sm: 'initial' },
+                justifyContent: 'space-around',
+                flexWrap: 'wrap',
+                ml: { md: 2 },
               }}
             >
               <DesktopDatePicker
@@ -80,14 +81,14 @@ const OrdersContainer = () => {
                     {...params}
                     size="small"
                     sx={{
-                      mx: 2,
+                      mx: { md: 2 },
                       width: '150px',
                       backgroundColor: colors.default_white,
                     }}
                   />
                 )}
               />
-              <FormControl>
+              <FormControl sx={{ mt: { xs: 2, md: 'initial' } }}>
                 <InputLabel id="location-select-label">Pika</InputLabel>
                 <Select
                   labelId="location-select-label"
@@ -95,6 +96,7 @@ const OrdersContainer = () => {
                   value={location}
                   label="Pika"
                   size="small"
+                  inputProps={{ MenuProps: { disableScrollLock: true } }}
                   sx={{ backgroundColor: colors.default_white }}
                   onChange={(e) => setLocation(e.target.value)}
                 >

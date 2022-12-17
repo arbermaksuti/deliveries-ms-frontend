@@ -29,6 +29,7 @@ const LeftSidebar: React.FC<Props> = (props) => {
       hideBackdrop={!smallDevice}
       open={openedSidebar}
       onClose={closedSidebar}
+      disableScrollLock
       transitionDuration={{ enter: 300, exit: 300 }}
       PaperProps={{
         sx: {

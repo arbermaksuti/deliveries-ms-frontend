@@ -7,6 +7,8 @@ import {
   InputLabel,
   MenuItem,
   Select,
+  CardActionArea,
+  Tooltip,
 } from '@mui/material'
 import CustomTable from 'src/components/CustomTable'
 import moment from 'moment'
@@ -44,16 +46,18 @@ const CustomersContainer = () => {
               sx={{
                 fontSize: '20px',
                 textAlign: { xs: 'center', sm: 'initial' },
+                mb: { xs: 1, md: 'initial' },
               }}
             >
-              Konsumatorët më të shpeshtë të javës
+              Klientët më të shpeshtë të kësaj jave
             </Typography>
             <Box
               sx={{
                 display: 'flex',
                 alignItems: 'center',
-                ml: { sm: 2 },
-                mt: { xs: 1, md: 'initial' },
+                justifyContent: 'space-around',
+                flexWrap: 'wrap',
+                ml: { md: 2 },
               }}
             >
               <DesktopDatePicker
@@ -86,14 +90,14 @@ const CustomersContainer = () => {
                     {...params}
                     size="small"
                     sx={{
-                      mx: 2,
+                      mx: { md: 2 },
                       width: '150px',
                       backgroundColor: colors.default_white,
                     }}
                   />
                 )}
               />
-              <FormControl>
+              <FormControl sx={{ mt: { xs: 2, md: 'initial' } }}>
                 <InputLabel id="location-select-label">Pika</InputLabel>
                 <Select
                   labelId="location-select-label"
@@ -101,6 +105,7 @@ const CustomersContainer = () => {
                   value={location}
                   label="Pika"
                   size="small"
+                  inputProps={{ MenuProps: { disableScrollLock: true } }}
                   sx={{ backgroundColor: colors.default_white }}
                   onChange={(e) => setLocation(e.target.value)}
                 >
@@ -110,11 +115,6 @@ const CustomersContainer = () => {
                 </Select>
               </FormControl>
             </Box>
-            <Typography
-              sx={{ ml: { sm: 'auto' }, mt: { xs: 1, md: 'initial' } }}
-            >
-              Shiko më shumë
-            </Typography>
           </Box>
           <Box
             sx={{
@@ -125,25 +125,30 @@ const CustomersContainer = () => {
             }}
           >
             {frequent_customers.map((oneFreqCustomer, i) => (
-              <Card
-                key={i}
-                sx={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  width: { xs: '100%', sm: '48%', md: '30%' },
-                  my: { xs: 0.5, md: 'initial' },
-                  py: 1,
-                  px: 2,
-                }}
-              >
-                <Typography variant="h6">{oneFreqCustomer.phone}</Typography>
-                <Typography sx={{ ml: 'auto' }}>
-                  Gjithsej:
-                  <span style={{ fontWeight: 'bold' }}>
-                    {oneFreqCustomer.total}
-                  </span>
-                </Typography>
-              </Card>
+              <Tooltip title="Kliko për të telefonuar">
+                <Card
+                  key={i}
+                  sx={{
+                    width: { xs: '100%', sm: '48%', md: '30%' },
+                    my: { xs: 0.5, md: 'initial' },
+                  }}
+                >
+                  <CardActionArea
+                    sx={{ py: 1, px: 2, display: 'flex', alignItems: 'center' }}
+                    href={`tel:${oneFreqCustomer.phone}`}
+                  >
+                    <Typography variant="h6">
+                      {oneFreqCustomer.phone}
+                    </Typography>
+                    <Typography sx={{ ml: 'auto' }}>
+                      Gjithsej:
+                      <span style={{ fontWeight: 'bold' }}>
+                        {oneFreqCustomer.total}
+                      </span>
+                    </Typography>
+                  </CardActionArea>
+                </Card>
+              </Tooltip>
             ))}
           </Box>
         </Box>

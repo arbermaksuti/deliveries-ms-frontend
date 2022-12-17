@@ -83,6 +83,7 @@ const CustomTable: React.FC<CustomTableProps> = (props) => {
               value={location}
               label="Pika"
               size="small"
+              inputProps={{ MenuProps: { disableScrollLock: true } }}
               sx={{ backgroundColor: colors.default_white }}
               onChange={(e) => setLocation(e.target.value)}
             >
