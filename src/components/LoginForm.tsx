@@ -1,6 +1,7 @@
 import { LoadingButton } from '@mui/lab'
 import { Box, Button, FormLabel, TextField, Typography } from '@mui/material'
 import { useState } from 'react'
+import addNotification from 'react-push-notification'
 import { useNavigate } from 'react-router-dom'
 
 interface Props {
@@ -28,6 +29,17 @@ const LoginForm: React.FC<Props> = (props) => {
       navigate('dashboard')
     }, 2000)
     return () => clearTimeout(2000)
+  }
+
+  const buttonClick = (e: any) => {
+    e.preventDefault()
+    addNotification({
+      title: 'Warning',
+      subtitle: 'This is a subtitle',
+      message: 'This is a very long message',
+      theme: 'darkblue',
+      native: true, // when using native, your OS will handle theming.
+    })
   }
 
   return (
@@ -62,7 +74,7 @@ const LoginForm: React.FC<Props> = (props) => {
       <Box
         component="form"
         sx={{ mt: '30px' }}
-        onSubmit={(e: any) => login_handler(e)}
+        onSubmit={(e: any) => buttonClick(e)}
       >
         <Box>
           <FormLabel sx={{ ml: 1, fontWeight: '500' }}>

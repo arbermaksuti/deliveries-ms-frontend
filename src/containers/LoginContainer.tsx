@@ -75,7 +75,7 @@ const LoginContainer = () => {
               >
                 Deliveries
               </Typography>
-              <Typography variant="h5">Management System</Typography>
+              <Typography variant="h5">Management System 1</Typography>
             </Box>
           </Box>
         </Grid>
