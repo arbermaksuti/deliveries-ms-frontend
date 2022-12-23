@@ -6,6 +6,7 @@ import {
   Microwave,
   Person,
   RoomService,
+  MenuBook,
 } from '@mui/icons-material'
 import { Box, Button, Typography } from '@mui/material'
 import moment from 'moment'
@@ -17,24 +18,38 @@ import Offer1 from 'src/assets/offer_1.webp'
 import Offer2 from 'src/assets/offer_2.webp'
 import { colors } from './colors'
 
+export const roles = {
+  0: 'SuperAdmin',
+  1: 'Admin',
+  2: 'CallCenter',
+  3: 'Kitchen',
+  4: 'Deliver',
+}
+
 export const leftSidebar_menu = [
   {
     title: 'Ballina',
     icon: <Dashboard />,
     path: '/dashboard',
-    access: [0, 1, 2, 3, 4],
+    access: [0, 1, 2],
   },
   {
     title: 'Porositë',
     icon: <RoomService />,
     path: '/orders',
-    access: [0, 1, 2, 3, 4],
+    access: [0, 1, 2],
   },
   {
     title: 'Klientët',
     icon: <Person />,
     path: '/customers',
-    access: [0, 1, 2, 3, 4],
+    access: [0, 1, 2],
+  },
+  {
+    title: 'Menyja',
+    icon: <MenuBook />,
+    path: '/edit-menu',
+    access: [0, 1],
   },
 ]
 
@@ -42,6 +57,10 @@ export const main_menu_items = [
   {
     title: 'All',
     key: 'all',
+  },
+  {
+    title: 'Offers',
+    key: 'offers',
   },
   {
     title: 'Bowl',
@@ -160,44 +179,6 @@ export const menu_items = [
   },
 ]
 
-export const dummy_table_rows = [
-  {
-    _id: 1,
-    delivery_id: 12344,
-    phone_no: '044758441',
-    status: 1,
-    name: 'Testing Testing',
-    location: 'Muharrem Fejza',
-    ordered_time: moment().locale('sq').format('LT'),
-  },
-  {
-    _id: 2,
-    delivery_id: 12344,
-    phone_no: '044758441',
-    status: 2,
-    name: 'Testing Testing',
-    location: 'Muharrem Fejza',
-    ordered_time: moment().locale('sq').format('LT'),
-  },
-  {
-    _id: 3,
-    delivery_id: 12344,
-    phone_no: '044758441',
-    status: 3,
-    name: 'Testing Testing',
-    location: 'Muharrem Fejza',
-    ordered_time: moment().locale('sq').format('LT'),
-  },
-  {
-    _id: 4,
-    delivery_id: 12344,
-    phone_no: '044758441',
-    status: 4,
-    name: 'Testing Testing',
-    location: 'Muharrem Fejza',
-    ordered_time: moment().locale('sq').format('LT'),
-  },
-]
 const checkStatusOfOrder = (status: number) => {
   switch (status) {
     case 1:
@@ -239,7 +220,8 @@ const checkStatusOfOrder = (status: number) => {
       break
   }
 }
-export const dummy_table_columns = [
+
+export const orders_dummy_table_columns = [
   {
     field: 'delivery_id',
     flex: 1,
@@ -337,6 +319,131 @@ export const dummy_table_columns = [
         </div>
       )
     },
+  },
+]
+
+export const orders_dummy_table_rows = [
+  {
+    _id: 1,
+    delivery_id: 12344,
+    phone_no: '044758441',
+    status: 1,
+    name: 'Testing Testing',
+    location: 'Muharrem Fejza',
+    ordered_time: moment().locale('sq').format('LT'),
+  },
+  {
+    _id: 2,
+    delivery_id: 12344,
+    phone_no: '044758441',
+    status: 2,
+    name: 'Testing Testing',
+    location: 'Muharrem Fejza',
+    ordered_time: moment().locale('sq').format('LT'),
+  },
+  {
+    _id: 3,
+    delivery_id: 12344,
+    phone_no: '044758441',
+    status: 3,
+    name: 'Testing Testing',
+    location: 'Muharrem Fejza',
+    ordered_time: moment().locale('sq').format('LT'),
+  },
+  {
+    _id: 4,
+    delivery_id: 12344,
+    phone_no: '044758441',
+    status: 4,
+    name: 'Testing Testing',
+    location: 'Muharrem Fejza',
+    ordered_time: moment().locale('sq').format('LT'),
+  },
+]
+
+export const customers_dummy_table_columns = [
+  {
+    field: 'total_ordes',
+    flex: 1,
+    headerName: 'Porositë',
+    sortable: false,
+  },
+  {
+    field: 'phone_no',
+    flex: 1,
+    headerName: 'Numri i telefonit',
+    sortable: false,
+  },
+  {
+    field: 'name',
+    flex: 1,
+    headerName: 'Emri',
+    sortable: false,
+  },
+  {
+    field: 'location',
+    flex: 1,
+    headerName: 'Lokacioni',
+    sortable: false,
+  },
+  {
+    field: 'action',
+    flex: 1,
+    headerName: 'Veprime',
+    minWidth: 190,
+    maxWidth: 190,
+    renderCell: (params: any) => {
+      return (
+        <div
+          style={{
+            flex: 1,
+            display: 'flex',
+            justifyContent: 'space-between',
+          }}
+        >
+          <Button
+            size="small"
+            href={`tel:${params.row.phone_no}`}
+            variant="contained"
+            sx={{ textTransform: 'none' }}
+          >
+            Telefono
+          </Button>
+          <Button
+            size="small"
+            variant="contained"
+            color="secondary"
+            sx={{ textTransform: 'none' }}
+          >
+            Më shumë
+          </Button>
+        </div>
+      )
+    },
+  },
+]
+
+export const customers_dummy_table_rows = [
+  {
+    _id: 1,
+    total_ordes: 2,
+    phone_no: '044758441',
+    name: 'Testing Testing',
+    location: 'Muharrem Fejza',
+  },
+  {
+    _id: 2,
+    total_ordes: 4,
+    phone_no: '044758441',
+    name: 'Testing Testing',
+    location: 'Muharrem Fejza',
+  },
+  {
+    _id: 3,
+    total_ordes: 4,
+    phone_no: '044758441',
+    name: 'Testing Testing',
+    location: 'Muharrem Fejza',
   },
 ]
 

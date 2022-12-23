@@ -47,6 +47,7 @@ const CustomTable: React.FC<CustomTableProps> = (props) => {
             justifyContent: { xs: 'space-between', md: 'initial' },
             flexWrap: 'wrap',
             gap: { xs: 2 },
+            alignItems: 'center',
           }}
         >
           <DesktopDatePicker

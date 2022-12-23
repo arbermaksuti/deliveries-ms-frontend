@@ -12,8 +12,8 @@ import CustomTable from 'src/components/CustomTable'
 import moment from 'moment'
 import 'moment/min/locales'
 import {
-  dummy_table_columns,
-  dummy_table_rows,
+  orders_dummy_table_rows,
+  orders_dummy_table_columns,
   frequent_orders,
 } from 'src/utils/enums'
 import { useState } from 'react'
@@ -37,6 +37,7 @@ const OrdersContainer = () => {
               alignItems: 'center',
               flexDirection: { xs: 'column', sm: 'initial' },
               mb: 2,
+              mt: { xs: 2, md: 'initial' },
             }}
           >
             <Typography sx={{ fontSize: '20px' }}>
@@ -168,7 +169,10 @@ const OrdersContainer = () => {
             {moment().locale('sq').format('LL')}
           </Typography>
         </Box>
-        <CustomTable rows={dummy_table_rows} columns={dummy_table_columns} />
+        <CustomTable
+          rows={orders_dummy_table_rows}
+          columns={orders_dummy_table_columns}
+        />
       </Box>
       <Box>
         <Box
@@ -183,8 +187,8 @@ const OrdersContainer = () => {
         </Box>
         <CustomTable
           datePickers
-          rows={dummy_table_rows}
-          columns={dummy_table_columns}
+          rows={orders_dummy_table_rows}
+          columns={orders_dummy_table_columns}
         />
       </Box>
     </>

@@ -19,10 +19,7 @@ const LoginForm: React.FC<Props> = (props) => {
     e.preventDefault()
     setLoading(true)
 
-    navigator.serviceWorker.ready.then(function (registration) {
-      registration.showNotification('Test Notification')
-    })
-    // setError(true)
+    setError(true)
     setTimeout(() => {
       nextForm()
       setUsername('')

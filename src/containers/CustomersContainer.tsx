@@ -14,10 +14,9 @@ import CustomTable from 'src/components/CustomTable'
 import moment from 'moment'
 import 'moment/min/locales'
 import {
-  dummy_table_columns,
-  dummy_table_rows,
+  customers_dummy_table_rows,
+  customers_dummy_table_columns,
   frequent_customers,
-  frequent_orders,
 } from 'src/utils/enums'
 import { useState } from 'react'
 import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker'
@@ -125,7 +124,7 @@ const CustomersContainer = () => {
             }}
           >
             {frequent_customers.map((oneFreqCustomer, i) => (
-              <Tooltip title="Kliko për të telefonuar">
+              <Tooltip title="Kliko për të telefonuar" key="i">
                 <Card
                   key={i}
                   sx={{
@@ -152,6 +151,46 @@ const CustomersContainer = () => {
             ))}
           </Box>
         </Box>
+        <Box
+          sx={{
+            display: 'flex',
+            alignItems: 'center',
+            flexDirection: { xs: 'column', md: 'row' },
+            mb: 2,
+          }}
+        >
+          <Typography variant="h5">Klientët e sotëm</Typography>
+          <Typography
+            variant="h5"
+            sx={{ mx: 1, display: { xs: 'none', md: 'initial' } }}
+          >
+            -
+          </Typography>
+          <Typography variant="h5">
+            {moment().locale('sq').format('LL')}
+          </Typography>
+        </Box>
+        <CustomTable
+          rows={customers_dummy_table_rows}
+          columns={customers_dummy_table_columns}
+        />
+      </Box>
+      <Box>
+        <Box
+          sx={{
+            display: 'flex',
+            alignItems: 'center',
+            mb: 2,
+            justifyContent: { xs: 'center', md: 'initial' },
+          }}
+        >
+          <Typography variant="h5">Klientët e mëparshëm</Typography>
+        </Box>
+        <CustomTable
+          datePickers
+          rows={customers_dummy_table_rows}
+          columns={customers_dummy_table_columns}
+        />
       </Box>
     </>
   )
