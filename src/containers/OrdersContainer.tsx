@@ -40,7 +40,7 @@ const OrdersContainer = () => {
               mt: { xs: 2, md: 'initial' },
             }}
           >
-            <Typography sx={{ fontSize: '20px' }}>
+            <Typography sx={{ fontSize: '20px', mb: { xs: 1, md: 'initial' } }}>
               Porositë më të shpeshta të kësaj jave
             </Typography>
             <Box

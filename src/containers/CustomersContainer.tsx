@@ -32,7 +32,7 @@ const CustomersContainer = () => {
   return (
     <>
       <Box sx={{ mb: 5 }}>
-        <Box sx={{ mb: 4, mt: { xs: 4, sm: 'initial' } }}>
+        <Box sx={{ mb: 4, mt: { xs: 2, sm: 'initial' } }}>
           <Box
             sx={{
               display: 'flex',
