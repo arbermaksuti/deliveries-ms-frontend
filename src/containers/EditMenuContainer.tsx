@@ -100,6 +100,8 @@ const EditMenuContainer = () => {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
+            flexWrap: 'wrap',
+            // flexDirection: 'column',
           }}
         >
           <TextField
@@ -108,33 +110,69 @@ const EditMenuContainer = () => {
             size="small"
             value="Testing"
             defaultValue="Testing"
+            sx={{ maxWidth: { xs: 150, md: 'initial' } }}
           />
-          <Box sx={{ display: 'flex', alignItems: 'center' }}>
+          <Box
+            sx={{
+              display: 'flex',
+              alignItems: 'center',
+              flexDirection: { xs: 'column', md: 'initial' },
+            }}
+          >
             <Typography>Statusi: </Typography>
-            <Checkbox
-              size="small"
-              color="secondary"
-              checked
-              icon={<RadioButtonUnchecked />}
-              checkedIcon={<RadioButtonChecked />}
-              // disabled={!(item.key === selectedCategory)}
-            />
-            <Typography>Aktive</Typography>{' '}
-            <Checkbox
-              size="small"
-              color="secondary"
-              checked={false}
-              icon={<RadioButtonUnchecked />}
-              checkedIcon={<RadioButtonChecked />}
-              // disabled={!(item.key === selectedCategory)}
-            />
-            <Typography>Jo aktive</Typography>
+            <Box
+              sx={{
+                display: 'flex',
+                alignItems: 'center',
+              }}
+            >
+              <Checkbox
+                size="small"
+                color="secondary"
+                checked
+                icon={<RadioButtonUnchecked />}
+                checkedIcon={<RadioButtonChecked />}
+                // disabled={!(item.key === selectedCategory)}
+              />
+              <Typography>Aktive</Typography>{' '}
+              <Checkbox
+                size="small"
+                color="secondary"
+                checked={false}
+                icon={<RadioButtonUnchecked />}
+                checkedIcon={<RadioButtonChecked />}
+                // disabled={!(item.key === selectedCategory)}
+              />
+              <Typography>Jo aktive</Typography>
+            </Box>
           </Box>
-          <Button variant="contained">Modifiko kategorinë</Button>
+          <Button
+            variant="contained"
+            sx={{ mx: { xs: 'auto', md: 'initial' } }}
+          >
+            Modifiko kategorinë
+          </Button>
         </Card>
       )}
       <Box sx={{ py: 3 }}>
-        <Typography variant="h6">Produktet</Typography>
+        <Box
+          sx={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+          }}
+        >
+          <Typography variant="h6">Produktet</Typography>
+          <TextField
+            label="Kërko produktin"
+            variant="outlined"
+            size="small"
+            sx={{
+              mt: 1,
+              // ' >.MuiOutlinedInput-root': { borderRadius: '8px' },
+            }}
+          />
+        </Box>
         {main_menu_items.map((item, i) => {
           if (item.key !== 'all')
             return (
