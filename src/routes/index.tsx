@@ -6,10 +6,12 @@ import OrdersPage from './OrdersPage'
 import CustomersPage from './CustomersPage'
 import EditMenuPage from './EditMenuPage'
 import UsersPage from './UsersPage'
+import ScrollToTop from 'src/utils/scrollToTop'
 
 const index = () => {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Routes>
         <Route path="*" element={<NotFoundPage />} />
         <Route path="/" element={<LoginPage />} />

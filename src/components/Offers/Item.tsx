@@ -85,13 +85,13 @@ const OffersItem: React.FC<OfferItemInterface> = (props) => {
       >
         <Box sx={{ display: 'flex' }}>
           <Typography
-            sx={{ fontSize: { xs: '30px', md: '50px' }, fontWeight: '700' }}
+            sx={{ fontSize: { xs: '40px', md: '50px' }, fontWeight: '700' }}
           >
             €
           </Typography>
           <Typography
             sx={{
-              fontSize: { xs: '40px', md: '80px' },
+              fontSize: { xs: '60px', md: '80px' },
               fontWeight: '700',
               mt: { md: '-5px' },
               ml: 1,
@@ -100,7 +100,7 @@ const OffersItem: React.FC<OfferItemInterface> = (props) => {
             {euroPrice}
           </Typography>
           <Typography
-            sx={{ fontSize: { xs: '30px', md: '50px' }, fontWeight: '700' }}
+            sx={{ fontSize: { xs: '40px', md: '50px' }, fontWeight: '700' }}
           >
             {centPrice.toString().padEnd(2, '0')}
           </Typography>

@@ -1,3 +1,4 @@
+import { Edit } from '@mui/icons-material'
 import {
   Button,
   Card,
@@ -5,22 +6,32 @@ import {
   CardContent,
   CardMedia,
   Grid,
+  IconButton,
   Typography,
+  useMediaQuery,
 } from '@mui/material'
 import Offer1 from 'src/assets/offer_1.webp'
 
-interface MenuItemProps {
+export interface MenuItemProps {
   img?: string
   name: string
   description: string
   price: number | string
-  openAddToShopDialog: () => void
+  editable?: boolean
+  onClick?: () => void
 }
 const MenuItem: React.FC<MenuItemProps> = (props) => {
-  const { img, name, description, price, openAddToShopDialog } = props
+  const { img, name, description, price, editable, onClick } = props
+  const smallDevice = useMediaQuery(
+    (theme: any) => theme.breakpoints.down('md'),
+    {
+      defaultMatches: true,
+      noSsr: false,
+    }
+  )
 
   return (
-    <Grid item xs={6} sm={4} md={3}>
+    <Grid item xs={6} sm={editable ? 3 : 4} md={3}>
       <Card variant="outlined" sx={{ borderRadius: 2 }}>
         <CardMedia
           component="img"
@@ -48,14 +59,37 @@ const MenuItem: React.FC<MenuItemProps> = (props) => {
           <Typography sx={{ fontSize: '20px', fontWeight: '500' }}>
             {price}€
           </Typography>
-          <Button
-            variant="outlined"
-            color="secondary"
-            size="small"
-            onClick={openAddToShopDialog}
-          >
-            Shto
-          </Button>
+          {editable ? (
+            smallDevice ? (
+              <IconButton
+                color="secondary"
+                size="small"
+                sx={{ border: '1px solid', borderRadius: '10px' }}
+                onClick={onClick}
+              >
+                <Edit />
+              </IconButton>
+            ) : (
+              <Button
+                variant="outlined"
+                color="secondary"
+                size="small"
+                startIcon={<Edit fontSize="small" />}
+                onClick={onClick}
+              >
+                Modifiko
+              </Button>
+            )
+          ) : (
+            <Button
+              variant="outlined"
+              color="secondary"
+              size="small"
+              onClick={onClick}
+            >
+              Shto
+            </Button>
+          )}
         </CardActions>
       </Card>
     </Grid>

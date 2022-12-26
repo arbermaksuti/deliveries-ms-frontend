@@ -1,9 +1,9 @@
-import { Grid, Typography } from '@mui/material'
+import { Grid } from '@mui/material'
 import React, { useState } from 'react'
-import { menu_items } from 'src/utils/enums'
-import MenuItem from 'src/components/MenuItems/Item'
 import Dynamic_Dialog from 'src/components/DynamicDialog'
 import AddToShopDialog from 'src/components/MenuItems/AddToShopDialog'
+import MenuItem from 'src/components/MenuItems/Item'
+import { menu_items } from 'src/utils/enums'
 
 interface MenuItemsProps {
   foods_type: string
@@ -21,7 +21,7 @@ const MenuItems: React.FC<MenuItemsProps> = (props) => {
           <MenuItem
             key={i}
             {...menuItem}
-            openAddToShopDialog={() => setAddToShopDialog(true)}
+            onClick={() => setAddToShopDialog(true)}
           />
         ))}
       </Grid>

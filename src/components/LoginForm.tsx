@@ -15,12 +15,23 @@ const LoginForm: React.FC<Props> = (props) => {
   const [loading, setLoading] = useState<boolean>(false)
   const [error, setError] = useState<boolean>(true)
 
+  async function requestNotificationPermission() {
+    try {
+      const permission = await window.Notification.requestPermission()
+      if (permission !== 'granted') {
+        throw new Error('Permission not granted for notifications')
+      }
+    } catch (error) {
+      console.error(error)
+    }
+  }
   const login_handler = (e: any) => {
     e.preventDefault()
     setLoading(true)
 
+    requestNotificationPermission()
     setError(true)
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       nextForm()
       setUsername('')
       setPassword('')
@@ -28,7 +39,7 @@ const LoginForm: React.FC<Props> = (props) => {
       setError(false)
       navigate('dashboard')
     }, 2000)
-    return () => clearTimeout(2000)
+    return () => clearTimeout(timer)
   }
 
   return (

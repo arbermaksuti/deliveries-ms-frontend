@@ -124,9 +124,8 @@ const CustomersContainer = () => {
             }}
           >
             {frequent_customers.map((oneFreqCustomer, i) => (
-              <Tooltip title="Kliko për të telefonuar" key="i">
+              <Tooltip title="Kliko për të telefonuar" key={i}>
                 <Card
-                  key={i}
                   sx={{
                     width: { xs: '100%', sm: '48%', md: '30%' },
                     my: { xs: 0.5, md: 'initial' },

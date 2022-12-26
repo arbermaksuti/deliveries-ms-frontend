@@ -30,7 +30,7 @@ const NewPasswordForm: React.FC<Props> = (props) => {
     )
     setLoading(true)
     setError(true)
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       navigate('/dashboard')
       nextForm()
       setNewPassword('')
@@ -38,7 +38,7 @@ const NewPasswordForm: React.FC<Props> = (props) => {
       setLoading(false)
       setError(false)
     }, 2000)
-    return () => clearTimeout()
+    return () => clearTimeout(timer)
   }
 
   return (

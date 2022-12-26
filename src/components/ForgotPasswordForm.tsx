@@ -26,13 +26,13 @@ const ForgotPasswordForm: React.FC<Props> = (props) => {
     alert(`Hey you are write this email ${email}`)
     setLoading(true)
     setError(true)
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       nextForm()
       setEmail('')
       setLoading(false)
       setError(false)
     }, 2000)
-    return () => clearTimeout()
+    return () => clearTimeout(timer)
   }
 
   return (
