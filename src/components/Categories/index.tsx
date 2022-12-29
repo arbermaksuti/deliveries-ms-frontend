@@ -11,9 +11,13 @@ import { main_menu_items, menu_items } from 'src/utils/enums'
 import { useState } from 'react'
 import UpdateCategory from './UpdateCategory'
 
-const Categories = () => {
+interface Props {
+  onClick: () => void
+}
+const Categories: React.FC<Props> = (props) => {
+  const { onClick } = props
   const [selectedCategory, setSelectedCategory] = useState<string>('')
-  console.log('selectedCategory', selectedCategory)
+
   return (
     <>
       <Box
@@ -38,7 +42,7 @@ const Categories = () => {
         }}
       >
         {main_menu_items.map((item, i) => {
-          if (item.key !== 'all')
+          if (item.key !== 'all') {
             return (
               <Card key={i}>
                 <ButtonBase
@@ -70,10 +74,14 @@ const Categories = () => {
                 </ButtonBase>
               </Card>
             )
+          } else {
+            return null
+          }
         })}
       </Box>
       {selectedCategory && (
         <UpdateCategory
+          onClick={onClick}
           category={{
             name:
               main_menu_items.find((item) => item.key === selectedCategory)

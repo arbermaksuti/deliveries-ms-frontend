@@ -12,10 +12,12 @@ import { useState } from 'react'
 import MenuItem, { MenuItemProps } from 'src/components/MenuItems/Item'
 
 interface Props {
+  onClick: () => void
   category: { name: string; status: boolean; products: MenuItemProps[] }
 }
 const UpdateCategory: React.FC<Props> = (props) => {
   const {
+    onClick,
     category: { name, status, products },
   } = props
 
@@ -99,19 +101,14 @@ const UpdateCategory: React.FC<Props> = (props) => {
               {name || 'Testing'}
             </span>
           </Typography>
-          <Button variant="contained" size="small">
+          <Button variant="contained" size="small" onClick={onClick}>
             Shto produkte
           </Button>
         </Box>
         <Box>
           <Grid container spacing={1}>
             {products.map((menuItem, i) => (
-              <MenuItem
-                key={i}
-                {...menuItem}
-                editable
-                // onClick={() => setEditItemDialog(true)}
-              />
+              <MenuItem key={i} {...menuItem} editable onClick={onClick} />
             ))}
           </Grid>
         </Box>
